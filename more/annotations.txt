@@ -1,0 +1,34 @@
+Annotations automáticas
+
+@Service, @Controller, @Repository, @Entity @Configuration
+
+“eu achei essa classe, vou criar ela sozinho”
+
+Spring faz tudo automaticamente via scan
+
+
+
+@Component
+
+Diz pro Spring:
+
+“cria e gerencia essa classe automaticamente”
+
+
+
+@Bean
+
+@Bean dentro de uma classe @Configuration
+
+“eu estou criando manualmente um objeto e entregando ele para o Spring somente gerenciar”
+
+Você cria o objeto manualmente e entrega pro Spring
+
+
+
+
+@Transactional
+
+Esse método modifica o banco
+
+Sempre que modificar o banco (save ou delete) use no método (buscas não precisa)

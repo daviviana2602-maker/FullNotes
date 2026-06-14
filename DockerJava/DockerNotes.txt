@@ -1,0 +1,12 @@
+=============== FLUXO =============== 
+
+RUN mvn clean package -DskipTests
+1 - Maven compila, gera .class e empacota → gera .jar em target/   (pasta target é a pasta de build do Maven)
+
+
+COPY --from=build /app/target/*.jar app.jar
+2 - Docker pega o .jar   ("executável" da aplicação Java)
+
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
+3 - Container executa java -jar app.jar

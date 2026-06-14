@@ -1,0 +1,39 @@
+==================== FLUXO ARQUITETURA ====================
+
+entity representa o modelo interno do sistema (geralmente banco/tabela)
+
+o request é o que o usuario manda
+
+Service eu trato o que o usuário manda (uso de Repository pra consultas e mudanças no banco)
+
+Response eu retorno o que já foi tratado no Service com base no que o front precisa
+
+Controller é onde eu organizo isso, chamando Request e retornando o Service que internamente retorna o response
+
+
+
+==================== ARQUITETURA ====================
+
+- http://localhost:8080/swagger-ui/index.html
+- Spring Initializr
+
+src/main/java/
+├── controller →            routes
+├── service →               regra de negócio
+├── repository →            conexão com Banco e querys
+├── entity →                formato das tabelas (traduz banco → objeto Java)
+├── exception →             exceções personalizadas e Global exception handler
+├── dto →                   request e response
+└── XApplication →          Main
+
+
+
+==================== FLUXO SPRING ====================
+
+- Quando a aplicação sobe, Spring:
+
+1. Spring escaneia classes (@Service, @Repository, @Controller)
+2. Cria os objetos (beans)
+3. Descobre dependências
+4. Injeta dependências via construtor
+5. Guarda tudo no ApplicationContext (container de contexto da aplicação: responsável por criar, gerenciar e armazenar todos os beans da aplicação.)

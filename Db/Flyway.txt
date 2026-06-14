@@ -1,0 +1,63 @@
+=============== APPLICATION-DEV ===============
+
+    flyway:
+        enabled: true
+
+    Ativa Flyway    
+
+
+    hibernate:
+      ddl-auto: validate =   Verifica se Entity bate com o banco (ideal)
+            ou
+      ddl-auto: none     =   Hibernate NÃO mexe no banco, NÃO cria tabela, NÃO valida nada
+
+
+=============== FLYWAY ===============
+
+Flyway é executado automaticamente na inicialização da aplicação (Spring Boot chama ele no startup)
+
+
+Quando roda a aplicação:
+
+(mvn spring-boot:run / docker-compose up)
+
+- Flyway faz automaticamente:
+
+1.lê o banco
+2.vê o histórico na tabela flyway_schema_history
+3.executa só o que ainda não rodou (segue formato padrão de arquivo: V2__add_phone.sql)
+
+
+=============== DOWNGRADE ===============
+
+Flyway NÃO suporta downgrade automático (como Alembic por exemplo)
+
+rollback é manual (nova migration corrigindo)
+EXEMPLO :
+
+
+Você criou:
+V2__add_column_age.sql
+
+
+Você cria (correção):
+V3__fix_age_column.sql
+
+
+=============== CRIAR VERSÕES ===============
+
+
+Versões precisam ser escritas em SQL puro em db/migration (manualmente)
+
+    - BIGSERIAL e BIGINT quando usar Long na entity (padrão pra id):
+
+    - id BIGSERIAL PRIMARY KEY
+    - user_id BIGINT NOT NULL
+
+
+1.FEZ V1 MANUAL
+
+2. adicionou coluna no users no código (entity)
+
+3. criar V2 manualmente com:
+    ALTER TABLE users ADD COLUMN phone VARCHAR(20);

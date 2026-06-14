@@ -1,0 +1,56 @@
+são mais pelo erro http retornado, não pela mensagem
+
+
+objetivo é transformar o que vem da Service:
+throw new NotFoundException("Bolo não encontrado");
+
+
+em:
+404 Not Found
+409 Conflict
+....
+
+
+================ FLUXO ================
+
+Ocorreu uma BadRequestException
+
+        ↓       
+
+Existe algum @ExceptionHandler(BadRequestException.class)?
+
+        ↓
+
+       SIM
+
+        ↓
+
+Executa handleBadRequest()
+
+
+================ Funcionamento Interno ================
+
+Service:
+throw new NotFoundException("Bolo não encontrado");
+
+        ↓
+
+O construtor da Exception recebe:
+message = "Bolo não encontrado"
+
+        ↓
+
+Executa:
+super(message);
+
+        ↓
+
+O RuntimeException guarda essa mensagem internamente.
+
+        ↓
+        
+Mais tarde no GlobalExceptionHandler:
+ex.getMessage()
+
+retorna:
+Bolo não encontrado

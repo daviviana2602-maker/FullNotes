@@ -1,0 +1,48 @@
+=============== FLUXO ===============
+
+request
+
+ → filter lê JWT
+
+ → JwtService (no parser) valida assinatura
+ → extrai sub + role
+
+ → filter cria Authentication
+ → injeta no SecurityContext
+
+
+Claims = dados dentro do JWT
+
+Quando criado um JWT tudo tem que ser passado como String pois vira um token JSON compactado
+
+
+=============== SecurityContext ==============
+
+
+Quando você faz:
+SecurityContextHolder.getContext().setAuthentication(auth);
+
+
+você está dizendo:
+“essa request agora pertence a esse usuário autenticado”
+
+
+SecurityContext guarda:
+Authentication object, que contém:
+
+userId (principal)
+roles (authorities)
+...
+
+
+Spring lê o SecurityContextHolder internamente quando:
+
+entra em @PreAuthorize
+entra em hasRole
+entra em filtros de autorização
+
+Exemplo:
+@PreAuthorize("hasRole('ADMIN')")
+
+👉 o Spring faz internamente:
+“pega o SecurityContext → verifica role”

@@ -1,0 +1,44 @@
+=============== SWAGGER AUTHORIZE ===============
+
+
+@Configuration
+@SecurityScheme(
+     name = "bearerAuth",
+     type = SecuritySchemeType.HTTP,
+     scheme = "bearer",
+     bearerFormat = "JWT"
+    )
+
+    public class SwaggerAuthorize{
+    }
+
+
+Nos controllers pro Swagger:
+@SecurityRequirement(name = "bearerAuth")
+
+
+=============== CONTROLLERS ===============
+
+
+Estar autenticado:
+@PreAuthorize("isAuthenticated()") 
+
+
+Estar autenticado e com a exata Role:
+@PreAuthorize("hasRole('USER')")
+
+
+Estar autenticado e dentro de tais Roles:
+@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+
+
+=============== FLUXO ===============
+
+
+1 - O generateToken do JwtService é usado no login, gera o accessToken e refreshToken
+
+2 - token é passado na requisição junto com dados
+
+3 - o JwtAuthenticationFilter roda automático , pega o token, limpa Bearer, cria e salva o objeto do usuário autenticado no SecurityContext
+
+4 - DEPOIS o fluxo segue, bate no @PreAuthorize e checa o SecurityContext, ele testa se bate a Role, se bater ele segue, se não ele retorna 403

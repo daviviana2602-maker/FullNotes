@@ -1,0 +1,68 @@
+“contrato” que o Spring transforma automaticamente em um objeto que conversa com o banco
+
+public interface ProdutoRepository extends JpaRepository<ProdutoEntity, Long> {}
+
+
+
+LISTAR TUDO   -   findAll()
+
+  public List<ProdutoEntity> listarTodos() {
+    return produtoRepository.findAll();
+}
+
+
+
+
+BUSCAR POR ID	  -   findById()
+
+public ProdutoEntity buscarPorId(Long id) {
+    return produtoRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+}
+
+
+
+
+SALVAR NO BANCO	  -   save()
+
+public ProdutoEntity criarProduto(ProdutoEntity produto) {
+    return produtoRepository.save(produto);
+}
+
+
+
+
+DELETAR DO BANCO   -   deleteById()
+
+public void deletarProduto(Long id) {
+    produtoRepository.deleteById(id);
+}
+
+
+
+============== FORMATO POR CLASSE ==============
+
+
+    private final TalRepository talRepository;     // declarando o campo da classe (declarado mas ainda sem valor)
+        
+        
+    // o construtor recebe o objeto pronto do Spring (ponto onde o Spring injeta o objeto)
+    public EditarProdutoService(TalRepository talRepository) {
+        this.talRepository = talRepository;         // atribui ao campo da classe
+    }
+
+
+
+============== Entity ==============
+
+
+public List<CarrinhoResponse> EditCarrinho(Long usuarioId, Long produtoId, Integer quantidade) {
+    
+
+    UsuarioEntity usuario = buscarPorId(usuarioId);         // recebe a linha completa (objeto) com base no id
+
+    ProdutoEntity produto = buscarProdutoId(produtoId);     // recebe a linha completa (objeto) com base no id
+
+    BigDecimal preco = produto.getPreco();      // acesso a linha usando o @Getter que já está passada na váriavel produto com base no Id
+
+}
