@@ -11,4 +11,16 @@
 | 500    | INTERNAL_SERVER_ERROR   | Erro do servidor           |
 
 
-@Valid na rota (antes de: @RequestBody) conecta a rota com o DTO request, retornando erros de "schema" de forma correta
+@Valid na rota (antes de: @RequestBody) conecta a rota com o DTO request, retornando erros de dto de forma correta
+
+
+Forma de retornar erro dentro de um Filter:
+
+    if (user.getStatus() == UserStatusEnum.DISABLED) {
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        response.setContentType("application/json");
+        response.getWriter().write("""
+    {"message":"User is disabled"}
+    """);
+        return;
+    }
