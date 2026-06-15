@@ -66,3 +66,30 @@ public List<CarrinhoResponse> EditCarrinho(Long usuarioId, Long produtoId, Integ
     BigDecimal preco = produto.getPreco();      // acesso a linha usando o @Getter que já está passada na váriavel produto com base no Id
 
 }
+
+
+
+============== Transactional e .save() ==============
+
+
+- Criar entidade nova:  save()
+Exemplo:
+
+
+UserEntity user = new UserEntity();
+
+repository.save(user);
+
+
+
+- Alterar entidade existente carregada do banco:    @Transactional
+Exemplo:
+
+
+@Transactional
+public void banUser(Long id){
+
+    UserEntity user = findById(id);
+
+    user.setStatus(DELETED);
+}
