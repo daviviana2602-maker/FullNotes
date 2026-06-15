@@ -83,7 +83,7 @@ repository.save(user);
 
 
 - Alterar entidade existente carregada do banco:    @Transactional
-Exemplo:
+Exemplos:
 
 
 @Transactional
@@ -92,4 +92,14 @@ public void banUser(Long id){
     UserEntity user = findById(id);
 
     user.setStatus(DELETED);
+}
+
+
+@Transactional
+public void createUser(Long id){
+
+UserEntity user = new UserEntity();
+
+userRepository.saveAndFlush(user);  // já persiste usuário, não precisa de outro save
+
 }
