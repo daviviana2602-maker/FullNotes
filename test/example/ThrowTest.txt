@@ -42,15 +42,10 @@ agora vamos chamar o nosso método passando o que ele precisa e "davi@gmail.com"
 assertThrows(
 
                 ConflictException.class,
-
                 () -> createAccountService.createAccount(
-
                         "Davi",
-
                         "davi@gmail.com",
-
                         "123456"
-
                 )
 
         );
