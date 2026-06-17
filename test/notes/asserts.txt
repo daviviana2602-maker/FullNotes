@@ -1,5 +1,6 @@
 =============== ASSERTS =============== 
 
+- Fluxo de sucesso:
 
 assertEquals():     Verifica se dois valores são iguais:
 
@@ -8,6 +9,8 @@ assertEquals():     Verifica se dois valores são iguais:
     Se não forem iguais, o teste falha.
 
 
+
+- Fluxo de erro:
 
 assertThrows():     Verifica se uma exceção é lançada:
 
