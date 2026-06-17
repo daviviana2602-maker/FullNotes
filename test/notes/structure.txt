@@ -1,0 +1,21 @@
+@Test
+void shouldCreateAccountSuccessfully() {
+
+
+    // Arrange (preparação)
+
+    when(...).thenReturn(...);
+
+
+    // Act (execução)
+
+    var response = service.createAccount(...);
+
+
+    // Assert (verificações)
+
+    assertEquals(...);
+    verify(...);
+
+
+}

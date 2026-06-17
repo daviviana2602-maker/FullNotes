@@ -1,0 +1,53 @@
+@Service
+public class CreateAccountService {
+
+
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+
+    public CreateAccountService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+
+
+    @Transactional
+    public CreateAccountResponse createAccount(String name, String email, String password) {
+
+        UserEntity user = new UserEntity();
+
+
+        if (userRepository.findByEmail(email).isPresent()) {
+            throw new ConflictException("The email already exists");
+        }
+
+
+        user.setRole(UserRoleEnum.USER);
+        user.setName(name);
+        user.setEmail(email);
+        user.setStatus(UserStatusEnum.ACTIVE);
+
+        String passwordHash = passwordEncoder.encode(password);
+        user.setPassword(passwordHash);
+
+
+        userRepository.saveAndFlush(user);
+
+        if (user.getId() == 1) {
+            user.setRole(UserRoleEnum.ADMIN);
+        }
+
+
+        return new CreateAccountResponse(
+            user.getId(),
+            user.getName(),
+            user.getEmail(),
+            user.getRole(),
+            user.getStatus()
+        );
+
+    }
+
+}

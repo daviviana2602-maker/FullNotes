@@ -1,0 +1,60 @@
+=============== COMANDOS =============== 
+
+
+- when():   Define um comportamento para um mock.
+
+    when(userRepository.findByEmail(email))
+
+Lê-se:
+Quando alguém chamar esse método...
+
+
+---
+
+
+- thenReturn():     Define o valor retornado pelo método mockado.
+
+    when(userRepository.findByEmail(email))
+        .thenReturn(Optional.empty());
+
+Lê-se:
+Quando chamarem esse método, devolva isso.
+
+
+---
+
+
+- verify():     Verifica se um método foi chamado e confirma que o método realmente foi executado.
+
+    verify(userRepository)
+        .saveAndFlush(user);
+
+
+---
+
+
+- never():    Usado junto com verify(), verifica que um método nunca foi chamado.
+
+    verify(userRepository, never())
+        .saveAndFlush(any());
+    any()
+
+
+---
+
+
+- any(UserEntity.class)
+
+Não importa qual UserEntity foi enviada.
+
+
+---
+
+
+- Optional.empty():   Representa ausência de valor (null)
+
+
+- Optional.of(obj):   Representa presença de valor:
+
+    Optional.of(user)
+    Significa: Existe um usuário.

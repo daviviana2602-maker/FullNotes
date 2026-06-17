@@ -1,0 +1,59 @@
+=============== TESTE ===============
+
+@Test
+    void shouldThrowWhenEmailAlreadyExists() {
+
+        UserEntity user = new UserEntity();
+
+        when(userRepository.findByEmail("davi@gmail.com"))
+                .thenReturn(Optional.of(user));
+
+
+        assertThrows(
+                ConflictException.class,
+                () -> createAccountService.createAccount(
+                        "Davi",
+                        "davi@gmail.com",
+                        "123456"
+                )
+        );
+
+
+        verify(userRepository, never())
+                .saveAndFlush(any(UserEntity.class));  
+
+    }
+
+
+
+=============== EXPLICAÇÃO (CIMA -> BAIXO) ===============
+
+
+inicialmente criamos uma nova UsereEntity que será usada em seguida, pois criamos o nosso when que diz:
+
+    quando for chamado userRepository.findByEmail passando "davi@gmail.com" retorne um usuário existente.
+    
+
+agora vamos chamar o nosso método passando o que ele precisa e "davi@gmail.com" e esperando uma ConflictException:
+
+    pois ela é quem está sendo retornada quando na service tentamos criar uma conta com um email já existente.
+
+
+assertThrows(
+
+                ConflictException.class,
+
+                () -> createAccountService.createAccount(
+
+                        "Davi",
+
+                        "davi@gmail.com",
+
+                        "123456"
+
+                )
+
+        );
+
+
+a service vai rodar e o ESPERADO é tomarmos ConflictException, então verificamos se SaveAndFlush NUNCA foi chamado (..., never()) com qualquer UserEntity.

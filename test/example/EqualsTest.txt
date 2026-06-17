@@ -1,0 +1,76 @@
+=============== TESTE ===============
+
+@Test
+    void shouldCreateAccountSuccessfully() {
+
+        when(userRepository.findByEmail("davi@gmail.com"))
+                .thenReturn(Optional.empty());
+
+        when(passwordEncoder.encode("123456"))
+                .thenReturn("HASH");
+
+
+        CreateAccountResponse response =
+                createAccountService.createAccount(
+                        "Davi",
+                        "davi@gmail.com",
+                        "123456"
+                );
+
+
+        assertEquals("Davi", response.name());
+        assertEquals("davi@gmail.com", response.email());
+        assertEquals(UserRoleEnum.USER, response.role());
+        assertEquals(UserStatusEnum.ACTIVE, response.status());
+
+
+        verify(passwordEncoder)
+                .encode("123456");
+
+        verify(userRepository)
+                .saveAndFlush(any(UserEntity.class));          
+
+    }
+
+
+
+=============== EXPLICAÇÃO (CIMA -> BAIXO) ===============
+
+
+quando chamado userRepository.findByEmail passando "davi@gmail.com" retorne usuário vazio (ninguém usa esse email ainda) isso vai evitar cair no erro do conflict;
+
+quando passwordEconder.encode que é um método que ja vem do SprinSec for chamado passando "123456" retorne "HASH";
+
+
+agora vamos CHAMAR o método todo passando o que é pedido e pegar sua resposta:
+
+CreateAccountResponse response =
+                createAccountService.createAccount(
+                        "Davi",
+                        "davi@gmail.com",
+                        "123456"
+                );
+
+
+agora ele vai rodar tudo, seguindo os whens, entao vai rodar até final.
+
+
+agora vamos pegar o que nos foi retornado com nossos Getters devido ao response ser private e comparar para ver se veio como esperado:
+
+assertEquals("Davi", response.getName());
+        assertEquals("davi@gmail.com", response.getEmail());
+        assertEquals(UserRoleEnum.USER, response.getRole());
+        assertEquals(UserStatusEnum.ACTIVE, response.getStatus());
+
+
+
+agora vamos verificar se o método encode() foi chamado.:
+
+verify(passwordEncoder)
+        .encode("123456");
+
+
+agora verificar se FOI chamado o método save and flush com qualquer UsuarioEntity:
+
+verify(userRepository)
+        .saveAndFlush(any(UserEntity.class));

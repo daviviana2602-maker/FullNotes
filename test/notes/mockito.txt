@@ -1,0 +1,25 @@
+=============== Padrão =============== 
+
+Junit
+Espelhar a estrutura do main dentro do test com "Test" ao fim do nome do arquivo
+
+
+=============== BEANS =============== 
+
+
+@Test
+Marca um método como teste.
+
+
+@Mock
+Cria uma versão falsa de uma dependência, em vez de acessar o banco real, você controla o comportamento dele.
+
+    
+
+@InjectMocks
+Cria a classe que será testada e injeta os mocks nela.
+
+    
+
+@ExtendWith(MockitoExtension.class)
+Ativa o Mockito para o teste, sem isso os @Mock e @InjectMocks não funcionam.

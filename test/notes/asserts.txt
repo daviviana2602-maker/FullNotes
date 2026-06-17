@@ -1,0 +1,18 @@
+=============== ASSERTS =============== 
+
+
+assertEquals():     Verifica se dois valores são iguais:
+
+
+    assertEquals(4, 2 + 2);
+    Se não forem iguais, o teste falha.
+
+
+
+assertThrows():     Verifica se uma exceção é lançada:
+
+
+    assertThrows(
+        ConflictException.class,
+        () -> service.createAccount(...)
+    );
