@@ -103,3 +103,24 @@ return carrinho.stream()                        // passa por cada item da lista 
         item.getPrecoTotal()
         ))
         .toList();                  // "chama" o stream e insere itens passados na lista
+
+
+
+==================== BigDecimal ====================
+
+
+BigDecimal.valueOf(10.5);
+
+// Operações
+add()
+subtract()
+multiply()
+divide()
+
+// Comparação
+compareTo()
+
+// Retorno compareTo()
+-1 = menor
+ 0 = igual
+ 1 = maior
