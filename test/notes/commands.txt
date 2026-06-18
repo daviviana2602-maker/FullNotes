@@ -40,8 +40,6 @@ Lê-se:
 Quando chamarem esse método, execute essa lógica e devolva o resultado.
 
 
-
-
 ---
 
 
@@ -79,3 +77,15 @@ Não importa qual UserEntity foi enviada.
 
     Optional.of(user)
     Significa: Existe um usuário.
+
+
+---
+
+doNothing()
+        when(ownershipService)
+        .checkOwnership(1L);
+
+
+Lê-se:
+
+Quando chamarem esse método, não faz nada e deixa continuar (ignora).
