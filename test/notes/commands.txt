@@ -20,6 +20,27 @@ Quando alguém chamar esse método...
 Lê-se:
 Quando chamarem esse método, devolva isso.
 
+return user; é obrigatório porque thenAnswer precisa devolver um valor para o método mockado
+
+
+---
+
+
+thenAnswer(): Permite executar código quando o método for chamado e decidir o que será retornado
+
+    when(userRepository.saveAndFlush(any(UserEntity.class)))
+        .thenAnswer(invocation -> {
+            UserEntity user = invocation.getArgument(0);
+            user.setId(2L);
+            return user;
+        });
+
+Lê-se:
+
+Quando chamarem esse método, execute essa lógica e devolva o resultado.
+
+
+
 
 ---
 

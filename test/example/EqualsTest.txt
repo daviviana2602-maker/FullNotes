@@ -9,6 +9,13 @@
         when(passwordEncoder.encode("123456"))
                 .thenReturn("HASH");
 
+        when(userRepository.saveAndFlush(any(UserEntity.class)))
+                .thenAnswer(invocation -> {
+                    UserEntity user = invocation.getArgument(0);        
+                    user.setId(2L);
+                    return user;
+                });
+
 
         CreateAccountResponse response =
                 createAccountService.createAccount(
@@ -40,6 +47,8 @@
 quando chamado userRepository.findByEmail passando "davi@gmail.com" retorne usuário vazio (ninguém usa esse email ainda) isso vai evitar cair no erro do conflict;
 
 quando passwordEconder.encode que é um método que ja vem do SprinSec for chamado passando "123456" retorne "HASH";
+
+para seguir a regra de id 1 da Service, quando o saveAndFlush for chamado passando qualquer UserEntity, simule o comportamento do banco gerando um ID para o usuário criado.
 
 
 agora vamos CHAMAR o método todo passando o que é pedido e pegar sua resposta:
