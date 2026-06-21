@@ -1,12 +1,5 @@
 ==================== Comandos úteis Java ====================
 
-Maiúsculo
-- nome.toUpperCase();
-
-Minúsculo
-- nome.toLowerCase();
-
-
 Remover espaços nas bordas
 - texto.trim();
 
@@ -18,26 +11,12 @@ Verificar se string está vazia ou só tem espaços
 - texto == null || texto.isBlank();
 
 
-Verificar se é letra
-- Character.isLetter(c);
-
-Verificar se é número
-- Character.isDigit(c);
-
-
-Checar quantidade de itens em lista
-- lista.size();
-
-
-Valor padrão se for null
-- Objects.requireNonNullElse(texto, "default");
-
-Exemplo:
-String nome = Objects.requireNonNullElse(scanner.nextLine(), "sem nome");
-
-
 Quantidade de caracteres
 - texto.length();
+
+
+Ignorando maiúsculas/minúsculas
+- texto.equalsIgnoreCase("davi");
 
 
 AND lógico
@@ -50,21 +29,6 @@ NOT lógico
 
 OR lógico
 - ||
-
-
-Comparar textos
-- texto.equals("Davi");
-
-Ignorando maiúsculas/minúsculas
-- texto.equalsIgnoreCase("davi");
-
-
-Pegar caractere específico
-- texto.charAt(0);
-
-
-Sempre que o valor que vai vir não for garantido 
-Optional<XEntity>
 
 
 
@@ -84,6 +48,10 @@ Verificar se lista contém item
 
 Criar lista vazia
 - List<String> lista = new ArrayList<>();
+
+
+Checar quantidade de itens em lista
+- lista.size();
 
 
 
@@ -116,6 +84,7 @@ add()
 subtract()
 multiply()
 divide()
+
 
 // Comparação
 compareTo()
