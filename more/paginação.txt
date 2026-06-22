@@ -1,0 +1,61 @@
+=============== List com paginação ===============
+
+
+Repository:
+
+Page<ThreadEntity> findByBoardId(Long boardId, Pageable pageable);
+
+
+findBydBoardId comum, mas como foi passado um Pageable, retorna Page<Entity> (ao invés de List<Entity>)
+
+
+- Spring query fica:
+
+SELECT *
+FROM threads
+WHERE board_id = ?
+LIMIT 20    
+OFFSET 0    (ignorar os x primeiros)
+
+
+==============================
+
+
+Service:
+
+public List<ListThreadsResponse> listThreads(Long boardId, int page) {
+
+        PageRequest pageable = PageRequest.of(page, 20);                    // PageRequest.of(qual página, quantidade por página)
+
+
+        Page<ThreadEntity> pageThreads =  threadRepository.findByBoardId(boardId, pageable);    // 20 threads por página COM o boardId passado
+
+
+        return pageThreads.stream()                                                             // transformando pra não retornar Entity 
+                .map(eachThread-> new ListThreadsResponse(     
+                        eachThread.getBoardId(),
+                        eachThread.getId(),
+                        eachThread.getName(),
+                        eachThread.getSubject(),
+                        eachThread.getContent()
+                ))
+                .toList();
+    }
+
+
+==============================
+
+
+Controller (formato para paginação):
+
+    @GetMapping("{boardId}/list")
+    public List<ListThreadsResponse> catchThreads(
+            @PathVariable Long boardId,                     // é passado parâmetro pai com PathVariable
+            @RequestParam(defaultValue = "0") int page      // é passado parâmetro page com RequestParam
+    )
+    {
+        return listThreadsService.listThreads(
+                boardId,
+                page
+        );
+    }
