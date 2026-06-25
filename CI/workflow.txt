@@ -1,0 +1,100 @@
+=============== CI workflow ===============
+
+Um workflow tem jobs e cada job roda em uma máquina separada:
+
+    workflow
+        |
+        +--- job 1
+        |
+        +--- job 2
+
+
+
+runs-on: ubuntu-latest:
+
+    onde ele roda.
+    O GitHub pega uma máquina Linux limpa pra executar isso
+
+
+=============== CI steps ===============
+
+steps:
+
+    são os passos sequenciais.
+    Ele executa de cima pra baixo:
+
+    step 1
+    ↓
+    step 2
+    ↓
+    step 3
+
+
+- PRIMEIRO:
+
+baixa o código
+Porque o runner é uma máquina nova, ele não tem o projeto.
+
+- name: Checkout
+uses: actions/checkout@v4
+
+
+
+- SEGUNDO:
+
+Sobe os containers
+
+- name: Start containers
+  run: docker compose up -d
+
+
+
+- TERCEIRO:
+
+Instala Java (runner é limpo/máquina nova).
+
+- name: Setup Java
+  uses: actions/setup-java@v4
+
+
+
+- QUARTO:
+
+Configura Java 21 e temurin:
+
+with:
+  java-version: '21'
+  distribution: temurin
+
+
+- QUINTO:
+
+Executa testes:
+se falhar para aqui e o CI fica vermelho.
+
+O CI fica vermelho.
+
+- name: Run tests
+  working-directory: backend    // caso o pom esteja em outra pasta
+  run: ./mvnw test
+
+
+
+- Sexto:
+
+Limpa target/ (com classes, jar antigo e arquivos compilados) e tenta recompilar o projeto, pulando testes (já rodaram)
+Evita erro de compilação ou funcionamento inconsistente por ter ou não ter arquivos antigos
+
+
+- name: Build
+  working-directory: backend    // caso o pom esteja em outra pasta
+  run: ./mvnw clean package -DskipTests
+
+
+- SÉTIMO:
+
+Desliga os containers.
+
+- name: Stop containers
+  if: always()                  // Com always(): passou ou falhou, sempre limpa
+  run: docker compose down

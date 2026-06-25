@@ -1,0 +1,43 @@
+=============== CI branch flow ===============
+
+
+   Branchdevelop
+      |
+      | commit
+      v
+
+     push
+
+      |
+      v
+
+   CI roda
+
+      |
+      +---- falhou
+      |
+      |        |
+      |        v
+      |
+      |     corrige
+      |
+      |        |
+      |        v
+      |
+      |     novo commit/push
+      |
+      |        |  
+      |        v
+      |    
+      +----  passou (verdinho)
+
+               |
+               v
+
+          Pull Request
+         develop → main
+
+               |
+               v
+               
+             merge

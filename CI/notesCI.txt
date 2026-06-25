@@ -1,0 +1,46 @@
+=============== CI (Continuous Integration) ===============
+
+
+Objetivo:
+- Garantir que cada alteração no código continua saudável.
+- Resultados no GitHub dentro do projeto resultados (aba Actions)
+
+
+Estrutura:
+
+.github/
+ └── workflows/
+      └── ci.yml
+
+
+
+Fluxo:
+
+git push
+   |
+   v
+GitHub Actions (runner)
+   |
+   +--> baixa o código (checkout)
+   |
+   +--> prepara ambiente
+   |
+   +--> docker compose up
+   |
+   +--> mvn test
+   |
+   +--> mvn package/build
+   |
+   +--> docker compose down
+
+
+Valida:
+
+    - testes passam
+    - aplicação compila
+    - containers sobem
+    - ambiente reproduzível
+
+
+Runner
+    - máquina temporária onde o GitHub executa o CI

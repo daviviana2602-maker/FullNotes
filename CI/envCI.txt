@@ -1,0 +1,31 @@
+- Após baixar o projeto:
+    
+    - name: Checkout
+        uses: actions/checkout@v4
+
+      
+
+- Adicionar .env com valores fictícios para subir o Container sem problemas:
+      
+    - name: Create env
+    run: |
+        echo "POSTGRES_USER=postgres" >> .env
+        echo "POSTGRES_PASSWORD=test" >> .env
+        echo "POSTGRES_DB=deepkai" >> .env
+
+        echo "SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/deepkai" >> .env
+        echo "SPRING_DATASOURCE_USERNAME=postgres" >> .env
+        echo "SPRING_DATASOURCE_PASSWORD=test" >> .env
+
+        echo "JWT_SECRET=test-secret-ci" >> .env
+        echo "REFRESH_JWT_EXPIRATION=86400000" >> .env
+        echo "ACCESS_JWT_EXPIRATION=3600000" >> .env
+
+
+
+- Subir o Container em seguida:
+
+        - name: Start containers
+        run: docker compose up -d
+
+........
