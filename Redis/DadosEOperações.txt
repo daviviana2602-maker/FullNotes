@@ -1,0 +1,45 @@
+=============== REDISOperações ===============
+
+Salvar:
+    SET nome valor
+
+Pegar:
+    GET nome
+
+Apagar:
+    DEL nome
+
+
+Ver tempo:
+    TTL nome
+
+
+=============== REDISTiposDeDados ===============
+
+String
+Guarda um valor único
+
+    SET user:1 "Davi"
+    GET user:1
+
+
+Hash
+Uma chave pode ter vários campos
+
+    HSET user:1 name "Davi"
+    HSET user:1 role "ADMIN"
+
+
+Lista
+Lista ordenada de valores
+
+    LPUSH orders:queue "order-100"
+    LPUSH orders:queue "order-101"
+
+
+Set
+Conjunto de valores sem repetição
+
+    SADD roles "ADMIN"
+    SADD roles "USER"
+    SADD roles "ADMIN"

@@ -1,0 +1,22 @@
+=============== REDISConceitos ===============
+
+
+- Key:  nome do dado
+entidade:identificador
+
+    products:all
+    user:15
+    rate:user:15
+
+
+
+
+- TTL: Time To Live
+Quanto tempo vive
+
+Exemplo:
+
+    products:all
+
+    expira em 300 segundos
+    Depois some sozinho.

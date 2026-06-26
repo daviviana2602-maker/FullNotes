@@ -1,0 +1,40 @@
+=============== REDISAnnotations ===============
+
+@EnableCaching na MainClass
+
+
+
+- value precisa se igual pra coisas correspondentes:
+    (tudo que for cache de produto interligado leva (value = products))
+    (tudo que for cache de Board interligado leva (value = boards))
+
+
+
+- Guardar resultado no cache:
+
+    @Cacheable("products")
+    public List<Product> findAll() {
+    return repository.findAll();
+    }
+
+
+
+- Quando alterar algo:
+
+    @Transactional
+    @CacheEvict(value = "products", allEntries = true)  
+    public void delete(Long id)
+
+
+allEntries = "Depois que esse método executar, apaga todas as entradas do cache chamado products"
+
+
+
+- Atualizar cache
+
+    @Transactional
+    @CachePut("products")
+
+
+Cacheput no caso de buscar um item específico e editar somente ele no cache
+Evita necessidade de outra query no banco por "pequenas mudanças"

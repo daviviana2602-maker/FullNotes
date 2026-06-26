@@ -1,0 +1,37 @@
+=============== Cache por paginação/filtros ===============
+
+
+    @Cacheable(value = "products", key = "#page")
+    public List<ProductResponse> listProducts(int page)
+
+    Pageable pageable = PageRequest.of(page, 10);
+
+    Page<ProductEntity> pageProducts = productRepository.findAll(pageable);
+
+
+- Redis cacheia
+
+    products:1
+    products:2
+    .....
+
+ e dentro de cada terão os itens correspondentes (no caso 10 da paginação)
+
+
+
+=============== Cache por ID ===============
+
+
+    @Cacheable(value = "products", key = "#id")
+    public ProductResponse findById(Long id)
+
+
+Redis:
+
+    products::15
+
+identidade é clara:
+
+    produto 15 = uma chave
+    usuário 20 = uma chave
+    pedido 100 = uma chave

@@ -1,0 +1,32 @@
+=============== Serialização ===============
+
+
+    @Configuration
+    @EnableCaching
+    public class RedisConfig {
+
+
+        @Bean
+        RedisCacheConfiguration cacheConfiguration() {
+
+            Jackson2JsonRedisSerializer<Object> serializer =
+                    new Jackson2JsonRedisSerializer<>(Object.class);
+
+
+            return RedisCacheConfiguration.defaultCacheConfig()
+                    .serializeValuesWith(
+                            RedisSerializationContext.SerializationPair.fromSerializer(serializer)
+                    );
+        }
+
+    }
+
+
+
+Quando:    @Cacheable(value = "products", key = "#page")
+
+- o Spring precisa transformar:         List<ListProductResponse>
+- em algo que o Redis consiga armazenar
+
+
+Então trocamos a serialização padrão em bytes do Java por JSON para o Redis armazenar os objetos corretamente
