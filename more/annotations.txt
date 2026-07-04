@@ -45,7 +45,7 @@ Você cria o objeto manualmente e entrega pro Spring
 
 Abre uma transação no banco de dados.
 
-Use em métodos que realizam alterações no banco (save, update ou delete).
+Use em métodos que realizam múltiplas alterações no banco.
 
 Se todas as operações forem concluídas com sucesso, a transação é confirmada (commit).
 

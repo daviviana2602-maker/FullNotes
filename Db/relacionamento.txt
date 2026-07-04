@@ -1,0 +1,139 @@
+============== RELACIONAMENTOS JPA ==============
+
+===============================================
+@OneToMany
+===============================================
+
+Um registro possui vários registros.
+
+Um user -> Muitos orders
+
+
+    @Entity
+    public class UserEntity {
+
+        @OneToMany(mappedBy = "user")       // O dono da relação está no campo user da classe OrderEntity (Indica que ESTE lado não é o dono da relação).
+        private List<OrderEntity> orders;
+
+    }
+
+
+    O @OneToMany NÃO cria coluna no banco.
+    Quem possui a FK é sempre o @ManyToOne.
+
+
+
+===============================================
+@ManyToOne
+===============================================
+
+Muitos registros apontam para UM registro.
+
+Muitos orders -> Um user
+
+
+    @Entity
+    public class OrderEntity {
+
+        @ManyToOne
+        @JoinColumn(name = "user_id")       // Define qual coluna será a chave estrangeira.
+        private UserEntity user;
+
+    }
+
+
+
+===============================================
+@OneToOne
+===============================================
+
+Um registro possui apenas outro registro.
+
+user -> Perfil
+
+
+    @Entity
+    public class PerfilEntity {
+
+        @OneToOne
+        @JoinColumn(name = "user_id")
+        private UserEntity user;
+
+    }
+
+
+
+===============================================
+@ManyToMany
+===============================================
+
+Muitos registros se relacionam com muitos.
+
+Um aluno faz vários cursos.
+Um curso possui vários alunos.
+Aluno -> Cursos
+
+
+    @Entity
+    public class AlunoEntity {
+
+        @ManyToMany
+        @JoinTable(
+            name = "aluno_curso",
+            joinColumns = @JoinColumn(name = "aluno_id"),
+            inverseJoinColumns = @JoinColumn(name = "curso_id")
+        )
+        private List<CursoEntity> cursos;
+
+    }
+
+
+Hibernate cria uma tabela intermediária.
+
+aluno_curso
+------------
+aluno_id
+curso_id
+
+
+
+===============================================
+CASCADE
+===============================================
+
+Permite que operações sejam propagadas.
+
+@OneToMany(cascade = CascadeType.ALL)
+
+Excluir user
+↓
+
+Exclui orders.
+
+
+Tipos comuns:
+
+CascadeType.PERSIST
+CascadeType.MERGE
+CascadeType.REMOVE
+CascadeType.ALL
+
+
+
+===============================================
+FETCH
+===============================================
+
+Define quando o relacionamento será carregado.
+
+LAZY
+
+Carrega apenas quando necessário.
+
+@ManyToOne(fetch = FetchType.LAZY)
+
+EAGER
+
+Carrega imediatamente junto da entidade.
+
+@ManyToOne(fetch = FetchType.EAGER)
