@@ -49,14 +49,23 @@ Muitos orders -> Um user
 
 Um registro possui apenas outro registro.
 
-user -> Perfil
+user -> account
 
 
     @Entity
-    public class PerfilEntity {
+    public class UserEntity{
+
+    @OneToOne(mappedBy = "user")
+    private AccountEntity account;
+
+    }
+
+
+    @Entity
+    public class AccountEntity {
 
         @OneToOne
-        @JoinColumn(name = "user_id")
+        @JoinColumn(name = "user_id")       // dono da relação, contém a FK.
         private UserEntity user;
 
     }
