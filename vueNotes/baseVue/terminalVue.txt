@@ -1,0 +1,68 @@
+==================== COMANDOS TERMINAL VUE ====================
+
+
+Criar um projeto Vue
+
+npm create vue@latest
+
+↓
+
+Cria um novo projeto Vue utilizando o template oficial.
+
+
+--------------------------------
+
+
+Instalar dependências
+
+npm install / npm i
+
+        ↓
+
+Instala todas as dependências listadas no package.json.
+
+
+--------------------------------
+
+
+Executar o projeto (Inicia o servidor de desenvolvimento)
+
+npm run dev
+
+        ↓
+
+Normalmente disponível em:
+
+http://localhost:5173
+
+
+--------------------------------
+
+
+Gerar versão de produção
+
+npm run build
+
+        ↓
+
+Compila o projeto para produção.
+
+Gera a pasta:
+
+dist/
+
+
+--------------------------------
+
+
+Instalar uma biblioteca
+
+npm install nome-da-biblioteca / npm i nome-da-biblioteca
+
+Exemplo
+
+npm i axios
+
+    ↓
+
+Adiciona uma nova dependência ao projeto.

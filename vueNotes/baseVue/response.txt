@@ -1,0 +1,22 @@
+==================== RESPONSE ====================
+
+Toda resposta possui:
+
+        Status Code
+
+            ↓
+
+         Headers
+
+            ↓
+
+           Body
+
+
+Exemplo:
+
+200 OK
+
+{
+    ...
+}

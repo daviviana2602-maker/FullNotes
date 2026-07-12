@@ -1,0 +1,35 @@
+==================== ESTRUTURA VUE ====================
+
+src/
+
+assets/
+→ imagens
+→ css
+
+
+components/
+→ componentes reutilizáveis
+
+
+views/
+→ páginas da aplicação
+
+
+router/
+→ configuração das rotas
+
+
+services/
+→ comunicação com API
+
+
+stores/
+→ estado global (Pinia)
+
+
+App.vue
+→ componente principal
+
+
+main.ts
+→ ponto de entrada da aplicação
