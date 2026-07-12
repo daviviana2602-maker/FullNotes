@@ -1,0 +1,37 @@
+=============== Rotina (SCHEDULER) ===============
+
+
+┌──────── segundo
+│ ┌────── minuto
+│ │ ┌──── hora
+│ │ │ ┌── dia do mês
+│ │ │ │ ┌ mês
+│ │ │ │ │ ┌ dia da semana
+│ │ │ │ │ │
+* * * * * *
+
+
+exemplos:
+
+// Todo minuto
+@Scheduled(cron = "0 * * * * *")
+
+
+// Toda hora
+@Scheduled(cron = "0 0 * * * *")
+
+
+// Todo dia meia-noite
+@Scheduled(cron = "0 0 0 * * *")
+
+
+// A cada 10 minutos
+@Scheduled(cron = "0 */10 * * * *")
+
+
+
+Também existe fixedRate:
+
+    @Scheduled(fixedRate = 60000)
+
+    Executa a cada 60 segundos.
