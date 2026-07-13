@@ -1,0 +1,82 @@
+==================== PASTAS PRINCIPAIS ====================
+
+
+src/
+
+├── views/
+│
+│   São as páginas/telas da aplicação.
+│
+│   Exemplos:
+│
+│   HomeView.vue
+│   LoginView.vue
+│   CreateAccountView.vue
+│
+│   Cada View representa uma página.
+
+
+├── services/
+│
+│   Responsável por conversar com o backend.
+│
+│   Funções que fazem:
+│
+│   GET
+│   POST
+│   PUT
+│   DELETE
+│
+│   Exemplo:
+│
+│   authService.ts
+│
+│   createAccount()
+│   login()
+│
+
+
+├── api/
+│
+│   Configuração do Axios.
+│
+│   Define coisas globais:
+│
+│   - URL base da API
+│   - JWT Token
+│   - interceptors
+│
+│   Exemplo:
+│
+│   baseURL:
+│   http://localhost:8080
+
+
+├── router/
+│
+│   Controla as rotas da aplicação.
+│
+│   Ele liga uma URL com uma View.
+
+
+
+
+==================== FOLDERS ====================
+
+
+frontend/
+
+├── node_modules/        ← (dependências instaladas)
+├── public/              ← arquivos públicos (imagens, favicon)
+├── src/                 ← 99% do trabalho
+│   ├── router/          ← rotas/páginas
+│   ├── App.vue          ← componente principal
+│   └── main.ts          ← inicialização do Vue
+│
+├── package.json         ← dependências e scripts npm
+├── package-lock.json    ← trava versões das dependências
+├── vite.config.ts       ← configuração do Vite
+├── tsconfig*.json       ← configuração TypeScript
+├── eslint.config.ts     ← regras de qualidade
+├── .prettierrc.json     ← formatação
+└── index.html           ← entrada da aplicação
