@@ -1,0 +1,45 @@
+==================== ref VUE ====================
+
+import { ref } from "vue"
+
+
+const name = ref("")
+
+
+const → declara a variável.
+
+ref("") → cria uma variável reativa do Vue, iniciando com uma string vazia.
+
+
+Quando você faz:
+
+    const name = ref("")
+
+
+Name não é uma string, é um objeto parecido com isso:
+
+    const name = {
+    value: ""
+    }
+
+
+    Por isso, no <script> se acessa:
+
+    name.value
+
+
+==================== Por que existe esse .value? ====================
+
+
+.value existe porque o Vue precisa saber quando o valor muda para atualizar automaticamente a tela.
+
+
+Quando você faz:
+
+    name.value = "Davi"
+
+
+o Vue percebe:
+
+    "Opa, o valor mudou."
+    e atualiza qualquer lugar da interface que esteja usando essa variável.
