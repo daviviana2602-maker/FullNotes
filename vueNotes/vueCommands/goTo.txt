@@ -1,0 +1,56 @@
+=========================
+    useRouter()
+=========================
+
+
+const router = useRouter()
+O que faz:
+
+Permite controlar navegação.
+
+Exemplo:
+
+router.push("/products")
+
+Vai para:
+
+/products
+
+
+=========================
+    router.push()
+=========================
+
+
+router.push(`/edit-product/${id}`)
+
+Redireciona para outra rota.
+
+Exemplo:
+
+  router.push("/login")
+
+
+
+=========================
+    uso conjunto
+=========================
+
+
+const router = useRouter()
+
+
+function go(path:string) {
+  router.push(path)
+}
+
+
+No template vai levar diretamente para a tela se baseando no router.ts:
+
+
+      <div class="card">
+      <h2>Produtos</h2>
+
+      <button @click="go('/products')">
+        Listar produtos
+      </button>

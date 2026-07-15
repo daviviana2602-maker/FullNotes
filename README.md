@@ -1,16 +1,19 @@
-# 🧠 Java Notes – Spring Boot & Backend Learning Hub
+# 🧠 Davi Notes
 
-Este repositório é minha base pessoal de estudos e anotações sobre desenvolvimento backend com Java, Spring Boot e tecnologias relacionadas.
+Este repositório reúne minhas anotações de estudo sobre desenvolvimento de software, com foco em **Backend utilizando Java e Spring Boot**, além de tecnologias que fazem parte do ecossistema, como bancos de dados, Docker, Redis, testes, autenticação e APIs REST.
 
-Ele funciona como uma **wiki técnica viva**, onde eu organizo conceitos, exemplos e aprendizados que uso em projetos reais.
+Também contém anotações de **Vue 3, TypeScript e Axios**, suficientes para desenvolver interfaces funcionais e integrar aplicações frontend com APIs.
+
+Ele funciona como uma **wiki técnica pessoal**, onde organizo conceitos, exemplos, boas práticas e aprendizados aplicados em projetos reais.
 
 ---
 
 # 🚀 Objetivo
 
-Centralizar conhecimento prático sobre backend para:
+Centralizar o conhecimento adquirido ao longo dos estudos para:
 
-- Revisão rápida de conceitos
-- Apoio em projetos reais
-- Evolução contínua como desenvolvedor
-- Preparação para entrevistas técnicas
+* Revisar conceitos de forma rápida;
+* Servir de apoio durante o desenvolvimento de projetos;
+* Documentar aprendizados e boas práticas;
+* Acompanhar minha evolução como desenvolvedor Backend;
+* Auxiliar na preparação para entrevistas técnicas.

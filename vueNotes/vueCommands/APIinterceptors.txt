@@ -1,0 +1,58 @@
+=========================
+    axios.create()
+=========================
+
+const api = axios.create({
+ baseURL:"http://localhost:8080/v1"
+})
+
+
+Cria uma instância personalizada do Axios.
+
+Evita repetir em todos os requests.:
+
+
+http://localhost:8080/v1
+
+
+
+=================================
+    Axios Interceptor Request
+=================================
+
+api.interceptors.request.use()
+O que faz:
+
+Executa antes de toda requisição.
+
+Exemplo:
+
+    Adicionar JWT Automaticamente:
+
+    Authorization: Bearer TOKEN
+
+
+
+=================================
+    Axios Interceptor Response
+=================================
+
+api.interceptors.response.use()
+
+Executa depois que recebe resposta.
+
+
+Usado para:
+
+    tratar erros
+    usar refresh token pra gerar novo access
+    logout automático
+
+
+Exemplo:
+
+401 Unauthorized
+
+↓
+
+gera novo access token.

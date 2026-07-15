@@ -1,0 +1,100 @@
+=========================
+onMounted()
+=========================
+
+onMounted(() => {
+  funcaoAqui()
+})
+
+
+  Executa uma função quando o componente termina de carregar na tela.
+
+
+Muito usado para:
+
+  buscar dados da API
+  carregar informações iniciais
+  executar configurações
+
+
+=========================
+    async / await
+=========================
+
+async function loadProducts(){
+
+    const response = await api.get("/products")
+
+    console.log(response.data)
+
+}
+
+
+await significa:
+
+    "Espere essa requisição terminar antes de continuar."
+
+e await deve ser usado dentro de uma função async
+
+
+=========================
+    v-model
+=========================
+
+<input v-model="name">
+
+
+Cria comunicação entre duas vias / sincroniza:
+
+  HTML → variável
+  Variável → HTML
+
+
+Exemplo:
+
+    Digitou: Mouse
+
+    Automaticamente:  name.value = "Mouse"
+
+
+=========================
+    interface
+=========================
+
+interface OrderResponse {
+
+ id:number;
+ name:string;
+
+}
+
+
+Define formato dos objetos.
+Exemplo:
+
+Garante que: order.id exista
+
+Parecido com DTO no Java, basicamente uma validação adicional no frontend.
+
+
+=========================
+    router.beforeEach
+=========================
+
+router.beforeEach((to)=>{
+
+})
+
+O que faz:
+
+É um guard de rota.
+
+Executa antes de entrar em uma página.
+
+Exemplo:
+
+if(role !== "ADMIN"){
+ return "/"
+}
+
+Impede usuário comum de acessar área administrativa.
