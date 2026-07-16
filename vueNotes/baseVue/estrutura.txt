@@ -1,0 +1,19 @@
+==================== ESTRUTURA VUE + Ts ====================
+
+
+src/
+
+
+api/
+api.ts = configs axios (baseURL e interceptors response e request)
+
+
+router/
+router.ts = path (url) das páginas e View page correspondente
+
+service/
+xService = requests montada para o backend (geralmente retornando a resposta do backend com response.data)
+
+
+views/
+xView.vue = páginas com html, css e chamando as services da página
