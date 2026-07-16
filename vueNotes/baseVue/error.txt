@@ -1,0 +1,27 @@
+================ Promise ================ 
+
+
+Representa uma operação
+assíncrona (futuro resultado).
+
+Sucesso:
+
+    Promise.resolve(data)
+
+
+Erro:
+
+    Promise.reject(error)
+
+            ↓
+
+Envia o erro para o catch.
+
+
+Ex:
+
+    try {
+
+    } catch(error) {
+
+    }

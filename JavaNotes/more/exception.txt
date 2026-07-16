@@ -54,3 +54,26 @@ ex.getMessage()
 
 retorna:
 Bolo não encontrado
+
+
+================ Funcionamento Para se adequar ao Frontend com melhor forma ================
+
+
+public class ForbiddenException extends RuntimeException {
+
+
+    private final String errorCode;      // errorCode precisa estar no ErrorResponse e precisa ser declarado, enquanto message já existe na RuntimeException
+
+
+    public ForbiddenException(String errorCode, String message) {
+        super(message);
+        this.errorCode = errorCode;
+    }
+
+
+    public String getErrorCode() {
+        return errorCode;
+
+    }
+
+}
