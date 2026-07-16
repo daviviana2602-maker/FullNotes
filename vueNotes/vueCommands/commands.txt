@@ -85,8 +85,6 @@ router.beforeEach((to)=>{
 
 })
 
-O que faz:
-
 É um guard de rota.
 
 Executa antes de entrar em uma página.
@@ -98,3 +96,29 @@ if(role !== "ADMIN"){
 }
 
 Impede usuário comum de acessar área administrativa.
+
+
+=========================
+      useRoute()
+=========================
+
+const route = useRoute()
+
+
+Retorna informações da rota atual.
+
+Exemplo:
+
+/edit-product/15
+
+    ↓
+
+route.params.id
+
+    ↓
+
+   "15"
+
+
+Como params retorna string:
+const id = Number(route.params.id) = pega id ou outro dado da url referente ao produto/usuario/dado e passa pra number caso precise enviar na request (vem como string da URL)
