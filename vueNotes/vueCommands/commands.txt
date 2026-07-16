@@ -16,6 +16,8 @@ Muito usado para:
   carregar informações iniciais
   executar configurações
 
+sem que o usuário precise clicar em nada
+
 
 =========================
     async / await
