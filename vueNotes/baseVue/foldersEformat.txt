@@ -1,63 +1,19 @@
-==================== PASTAS PRINCIPAIS ====================
+==================== FORMATO DOS ARQUIVOS VIEW.VUE ====================
 
 
-src/
-
-├── views/
-│
-│   São as páginas/telas da aplicação.
-│
-│   Exemplos:
-│
-│   HomeView.vue
-│   LoginView.vue
-│   CreateAccountView.vue
-│
-│   Cada View representa uma página.
+<template>
+  <!-- HTML -->
+</template>
 
 
-├── services/
-│
-│   Responsável por conversar com o backend.
-│
-│   Funções que fazem:
-│
-│   GET
-│   POST
-│   PUT
-│   DELETE
-│
-│   Exemplo:
-│
-│   authService.ts
-│
-│   createAccount()
-│   login()
-│
+<script setup lang="ts">
+// TypeScript
+</script>
 
 
-├── api/
-│
-│   Configuração do Axios.
-│
-│   Define coisas globais:
-│
-│   - URL base da API
-│   - JWT Token
-│   - interceptors
-│
-│   Exemplo:
-│
-│   baseURL:
-│   http://localhost:8080
-
-
-├── router/
-│
-│   Controla as rotas da aplicação.
-│
-│   Ele liga uma URL com uma View.
-
+<style scoped>
+/* CSS */
+</style>
 
 
 

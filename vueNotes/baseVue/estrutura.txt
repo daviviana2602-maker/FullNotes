@@ -1,19 +1,41 @@
-==================== ESTRUTURA VUE + Ts ====================
-
+==================== ESTRUTURA VUE + TS ====================
 
 src/
 
-
 api/
-api.ts = configs axios (baseURL e interceptors response e request)
+├── api.ts
+│
+│ Configuração central do Axios.
+│ - baseURL
+│ - Request Interceptors
+│ - Response Interceptors
+│ - Refresh Token automático
+│ - Tratamento global de autenticação
 
 
 router/
-router.ts = path (url) das páginas e View page correspondente
+├── router.ts
+│
+│ Configuração das rotas da aplicação
+│ - URLs
+│ - View correspondente
+│ - Guards (autenticação, admin, etc)
 
-service/
-xService = requests montada para o backend (geralmente retornando a resposta do backend com response.data)
+
+services/
+├── AuthService.ts
+├── ProductService.ts
+├── UserService.ts
+│
+│ Camada responsável por consumir a API
+│ Cada service monta as requests HTTP
+│ envia DTOs tipados quando necessário e retorna os dados do backend
 
 
 views/
-xView.vue = páginas com html, css e chamando as services da página
+├── LoginView.vue
+├── ProductsView.vue
+├── AdminView.vue
+│
+│ Páginas da aplicação.
+│ Contêm template, estilização, lógica da página e chamadas para os services.

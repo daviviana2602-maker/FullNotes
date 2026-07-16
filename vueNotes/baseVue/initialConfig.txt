@@ -1,0 +1,16 @@
+==================== CONFIG VUE ====================
+
+
+- use Typescript
+
+
+│  ◻ JSX Support
+│  ◼ Router (SPA development)
+│  ◻ Pinia (state management)
+│  ◻ Vitest (unit testing)
+│  ◻ End-to-End Testing
+│  ◼ Linter (error prevention)
+│  ◼ Prettier (code formatting)
+
+
+EXPERIMENTAL FEATURES ◻        
