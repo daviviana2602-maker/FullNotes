@@ -1,0 +1,48 @@
+=========================
+        Toast
+=========================
+
+
+Sistema de notificações visuais do frontend.
+Substitui o alert() por mensagens bonitas que aparecem na tela e somem automaticamente.
+
+
+Exemplo:
+
+    toast.error("Erro ao criar produto.");
+
+Tipos:
+
+    toast.success()
+    Mensagem de sucesso.
+
+    toast.error()
+    Mensagem de erro.
+
+    toast.warning()
+    Aviso.
+
+    toast.info()
+    Informação.
+
+
+    - O Toast já possui CSS e animações próprias.
+    - Não precisa criar HTML ou CSS manualmente.
+
+
+
+Fluxo de erro:
+
+        Backend retorna ErrorCodeEnum
+
+                    ↓
+
+            Axios cria AxiosError
+
+                    ↓
+
+handleApiError() transforma o erro em mensagem amigável
+
+                    ↓
+
+    toast.error() mostra a mensagem na tela.
