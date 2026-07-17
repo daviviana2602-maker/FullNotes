@@ -1,0 +1,94 @@
+==================================
+        FORMAS DE USAR CSS
+==================================
+
+
+=========================
+FORMA 1 - INLINE
+=========================
+
+CSS escrito diretamente na tag HTML.
+
+
+Exemplo:
+
+<h1 style="color: orangered; font-size: 60px">
+
+Quiz para programadores
+
+</h1>
+
+
+
+=========================
+FORMA 2 - CSS INTERNO
+=========================
+
+CSS escrito dentro da tag <style> no HTML.
+
+
+Exemplo:
+
+
+<head>
+
+<style>
+
+h1 {
+
+    color: orangered;
+    font-size: 60px;
+
+}
+
+
+h2 {
+
+    color: olivedrab;
+    font-size: 30px;
+
+}
+
+
+p {
+
+    color: orangered;
+    font-size: 20px;
+
+}
+
+</style>
+
+</head>
+
+
+
+=========================
+FORMA 3 - CSS EXTERNO
+=========================
+
+CSS separado em um arquivo próprio.
+
+
+Exemplo:
+
+style.css
+
+
+h1 {
+
+    color: orangered;
+
+}
+
+
+HTML:
+
+<link rel="stylesheet" href="style.css">
+
+
+Vantagem:
+
+- Código mais organizado.
+- Reutilização de estilos.
+- Melhor manutenção em projetos grandes.

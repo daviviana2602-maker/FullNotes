@@ -1,0 +1,182 @@
+=========================
+        CSS COMMANDS
+=========================
+
+
+=========================
+        DISPLAY / FLEXBOX
+=========================
+
+display: flex;
+
+Ativa o Flexbox no elemento.
+
+Os filhos diretos desse elemento passam a ser organizados pelo Flexbox.
+
+
+flex-direction;
+
+Define a direção dos elementos.
+
+Exemplos:
+
+row = horizontal (padrão)
+
+column = vertical
+
+
+gap;
+
+Define o espaçamento entre os elementos filhos.
+
+
+=========================
+        TAMANHOS
+=========================
+
+rem;
+
+Unidade relativa ao tamanho da fonte raiz da página.
+
+Ajuda na adaptação de diferentes telas.
+
+
+px;
+
+Tamanho fixo em pixels.
+
+
+width;
+
+Define a largura do elemento.
+
+
+Exemplo:
+
+width: 35%;
+
+O elemento ocupa 35% do espaço disponível.
+
+
+max-width;
+
+Define o tamanho máximo que um elemento pode alcançar.
+
+Evita que fique gigante em telas grandes.
+
+
+height;
+
+Define a altura do elemento.
+
+
+height: auto;
+
+Mantém a proporção original do elemento.
+
+
+=========================
+        ESPAÇAMENTO
+=========================
+
+padding;
+
+Espaçamento interno.
+
+Distância entre o conteúdo e a borda do elemento.
+
+
+margin;
+
+Espaçamento externo.
+
+Distância entre um elemento e outros elementos.
+
+
+margin: 0 auto;
+
+Centraliza horizontalmente um elemento.
+
+
+margin-top;
+
+Adiciona espaço acima do elemento.
+
+
+margin-bottom;
+
+Adiciona espaço abaixo do elemento.
+
+
+=========================
+        CORES
+=========================
+
+background-color;
+
+Define a cor do fundo.
+
+
+color;
+
+Define a cor do texto.
+
+
+=========================
+        TEXTOS
+=========================
+
+font-size;
+
+Define o tamanho da fonte.
+
+
+text-align: center;
+
+Centraliza o texto.
+
+
+text-align: left;
+
+Alinha o texto à esquerda.
+
+
+text-align: right;
+
+Alinha o texto à direita.
+
+
+
+=========================
+        LISTAS
+=========================
+
+list-style-position: inside;
+
+Faz o marcador da lista ficar junto com o texto.
+
+
+Exemplo:
+
+ul, ol {
+
+    list-style-position: inside;
+
+}
+
+
+
+=========================
+        BORDAS
+=========================
+
+border;
+
+Adiciona uma borda ao elemento.
+
+
+border-collapse: collapse;
+
+Junta as bordas de uma tabela.
+
+Remove o espaço entre as células.

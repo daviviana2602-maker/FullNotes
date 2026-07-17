@@ -1,0 +1,220 @@
+==============================
+HTML CORE
+==============================
+
+<!DOCTYPE html> → Define o tipo do documento (HTML5)
+
+<html> → Raiz da página HTML (tudo fica dentro)
+
+<head> → Metadados (não visível na página)
+
+<title> → Nome exibido na aba do navegador
+
+<body> → Conteúdo visível da página
+
+<header> → Parte superior (logo, título, navegação)
+
+<main> → Conteúdo principal da página (apenas um por página)
+
+<footer> → Rodapé (direitos autorais, contatos)
+
+<section> → Seção de conteúdo (agrupa conteúdos relacionados)
+
+<nav> → cria uma side bar (sessão de navegação)
+
+
+==============================
+COMANDOS
+==============================
+
+<h1>Título Principal</h1> → Tamanho do texto (1 - 6) (apenas um h1 por página)
+
+
+<p>Algum texto aqui</p> → Parágrafo (texto normal)
+
+
+<strong> → Texto em negrito
+
+
+<em> → Texto em itálico
+
+
+<br> → Quebra de linha
+
+
+<abbr title="exemplo">exp</abbr> → Mostra explicação ao passar o mouse
+
+
+<!-- Nomeia uma classe q pode ser puxada -->
+class = "nome da classe aqui">
+
+
+<!-- Contêiner nomeado no class pra ser chamado no CSS -->
+<div class="checkbox-option">
+    <input type="checkbox" id="p5a" name="p5a" value="Java">
+    <label for="p5a">Java</label>
+</div>
+
+<!-- Conteúdo oculto com resumo expansível -->
+<details>
+    <summary>Nome</summary>
+</details>
+
+
+<!-- Área de texto -->
+<textarea></textarea>
+
+
+<!-- Botão -->
+<button type="submit">Enviar</button>
+
+
+<!-- Palavra ou imagem clicável -->
+<a href="https://www.instagram.com/dav1_viana/" target="_blank">INSTAGRAM</a>
+
+
+<!-- caixa de linhas -->
+<fieldset>
+
+    
+==============================
+INPUT / FORMULÁRIO
+==============================
+
+<!-- Formulário agrupa todos os inputs -->
+<form>
+
+    <label for="name">Nome:</label>
+    <input type="text" id="name" placeholder="Digite o nome">
+
+
+    <label for="age">Idade:</label>
+    <input type="number" id="age" placeholder="Digite a idade">
+
+
+    <label for="password">Senha:</label>
+    <input type="password" id="password" placeholder="Digite a senha">
+
+
+    <label for="date">Data:</label>
+    <input type="date" id="date">
+
+    <!-- Upload de arquivo -->
+    <input type="file">
+
+</form>
+
+<!-- Link externo -->
+<a href="https://example.com" target="_blank">Abrir link</a>
+
+
+
+==============================
+MENU SUSPENSO
+==============================
+
+<select name="example" id="example">
+    <option value="id">id</option>
+    <option value="name">name</option>
+    <option value="type">type</option>
+</select>
+
+
+
+==============================
+IMAGEM + LEGENDA
+==============================
+
+<figure>
+    <img src="image.png" alt="descrição">
+    <figcaption>Descrição da imagem</figcaption>
+</figure>
+
+
+
+==============================
+MÚLTIPLA ESCOLHA
+==============================
+
+<!-- Múltiplas escolhas ao mesmo tempo -->
+<input type="checkbox" id="c1">
+<label for="c1">Opção 1</label>
+
+<input type="checkbox" id="c2">
+<label for="c2">Opção 2</label>
+
+<!-- Apenas uma escolha -->
+<input type="radio" name="group1" id="r1">
+<label for="r1">Opção 1</label>
+
+<input type="radio" name="group1" id="r2">
+<label for="r2">Opção 2</label>
+
+
+
+==============================
+TABELA
+==============================
+
+<table border="2">
+
+    <thead> <!-- Cabeçalho -->
+        <tr>
+            <th>Título</th>
+            <th>Info</th>
+        </tr>
+    </thead>
+
+    <tbody> <!-- Conteúdo principal -->
+        <tr>
+            <td>Dado</td>
+            <td>Valor</td>
+        </tr>
+    </tbody>
+
+    <tfoot> <!-- Rodapé -->
+        <tr>
+            <td colspan="2">Fim</td>
+        </tr>
+    </tfoot>
+
+</table>
+
+
+
+==============================
+LISTAS
+==============================
+
+<!-- Sem números -->
+<ul>
+    <li>Item</li>
+    <li>Item</li>
+</ul>
+
+<!-- Com números -->
+<ol>
+    <li>Item</li>
+    <li>Item</li>
+</ol>
+
+
+
+==============================
+ESTRUTURA DE FORMULÁRIO
+==============================
+
+<fieldset>
+    <legend><strong>INFORMAÇÕES</strong></legend>
+
+    <label for="name">Nome:</label>
+    <input type="text" id="name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email">
+
+    <label for="comentarios">Comentários:</label>
+    <textarea name="comentarios" id="comentarios" placeholder="Digite os seus comentários"></textarea>
+
+    <button type="submit">Enviar</button>
+</fieldset>
