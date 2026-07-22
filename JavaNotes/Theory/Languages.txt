@@ -1,0 +1,35 @@
+=============== Linguagem Compilada =============== 
+
+      Código
+
+        ↓
+
+    Executável (O compilador gera um executável e Depois a CPU executa diretamente.)
+
+        ↓
+
+     Execução
+
+
+Exemplos:
+
+C - C++ - Rust - Go
+
+
+=============== Linguagem Interpretada =============== 
+
+
+          Código
+
+            ↓
+
+        Interpretador (O interpretador vai lendo parte por parte e executando.)
+
+            ↓
+
+         Execução
+
+
+Exemplos:
+
+Python, JavaScript, PHP

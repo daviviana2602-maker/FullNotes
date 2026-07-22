@@ -1,0 +1,30 @@
+=============== Maven =============== 
+
+Ferramenta de build que automatiza tudo relacionado ao projeto:
+
+
+    baixa dependências
+    compila
+    testa
+    gera JAR
+    gera WAR
+    empacota
+    executa plugins
+
+
+Baixar bibliotecas:
+
+Você coloca:
+
+    <dependency>
+
+
+Ele procura no Maven Central.
+
+    Baixa.
+
+    Guarda em:
+
+    .m2
+
+    Depois nunca mais baixa.

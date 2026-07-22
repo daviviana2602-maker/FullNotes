@@ -1,0 +1,129 @@
+=============== JVM (Java Virtual Machine) =============== 
+
+
+    A JVM é um programa responsável por executar aplicações Java.
+
+Ela não executa arquivos .java.
+Ela executa Bytecode (.class).
+
+
+
+Fluxo:
+
+    Código Java (.java)
+            │
+            ▼
+          javac
+            │
+            ▼
+    Bytecode (.class)
+            │
+            ▼
+           JVM
+            │
+            ▼
+    Código de máquina
+
+
+
+Por isso Java é considerado "Write Once, Run Anywhere".
+O mesmo .class roda em Windows, Linux e Mac.
+A única exigência é existir uma JVM naquela máquina.
+
+
+O que a JVM faz?
+
+Ela faz muito mais que executar código.
+
+Ela também é responsável por:
+
+    gerenciamento de memória
+    Garbage Collector
+    carregamento de classes
+    otimização do código (JIT)
+    tratamento de exceções
+    gerenciamento de threads
+
+
+Ela é praticamente um sistema operacional exclusivo da aplicação Java.
+
+
+=============== Componentes da JVM =============== 
+
+
+- Class Loader: Carrega as classes conforme necessário.
+
+
+    Ao invés de carregar todas de uma vez, a JVM carrega somente quando alguém usa.
+    Isso economiza memória.
+
+
+=============== 
+
+- Runtime Data Areas: Todos os objetos ficam aqui.
+
+É onde ficam:
+
+
+    ├── Heap
+    ├── Stack
+    ├── Metaspace
+    ├── PC Register
+    └── Native Method Stack
+
+
+=============== 
+
+- Stack
+
+Cada método possui sua Stack Frame.
+
+Exemplo:
+
+  main()
+
+    ↓
+
+  login()
+
+    ↓
+
+authenticate()
+
+
+Cada chamada cria uma Stack Frame.
+Quando o método termina, ela desaparece.
+
+
+=============== 
+
+- Execution Engine: Executa o bytecode.
+
+Possui:
+
+Interpreter
+Executa instrução por instrução.
+
+    JIT Compiler
+
+    Percebe métodos muito usados.
+
+    Compila para código nativo.
+
+    Assim eles ficam muito mais rápidos.
+
+
+=============== 
+
+Garbage Collector: Remove objetos sem referência.
+
+
+Exemplo:
+
+    User u = new User();
+
+    u = null;
+
+Agora ninguém aponta para esse objeto.
+
+O Garbage Collector poderá removê-lo.
