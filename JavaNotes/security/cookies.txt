@@ -1,0 +1,126 @@
+=============== COOKIES ===============
+
+
+Cookie é um pequeno dado armazenado pelo navegador.
+
+O backend cria usando:
+Set-Cookie
+
+O navegador salva e envia automaticamente nas próximas requisições.
+
+
+=============== FLUXO COM COOKIE ===============
+
+
+1 - Backend responde no login:
+
+    Set-Cookie:
+    refreshToken=TOKEN
+
+
+2 - Navegador salva o cookie automaticamente
+
+
+3 - Front não precisa salvar nem acessar: localStorage.setItem("refreshToken")
+
+
+4 - Ao chamar /refresh:
+
+    POST /auth/refresh
+
+
+O navegador envia automaticamente:
+
+Cookie:
+refreshToken=TOKEN
+
+
+5 - Backend pega o cookie, valida o refreshToken e gera um novo accessToken
+
+
+
+=============== ATRIBUTOS IMPORTANTES ===============
+
+
+HttpOnly:
+    - JavaScript não consegue ler o cookie
+    - Protege contra roubo via XSS (JavaScript malicioso)
+
+
+Secure:
+    - Cookie só é enviado se a conexão for HTTPS (impede roubo de cookie por estar criptografado)
+
+
+SameSite("Strict):
+    - Controla envio entre sites
+    - Ajuda contra CSRF
+    - "não deixe um site externo usar esse refresh token automaticamente"
+
+
+Path:
+    - Define em quais rotas o cookie será enviado
+
+maxAge:
+    - Duração do cookie, depois disso o navegador remove automaticamente.
+
+
+
+=============== LOCALSTORAGE VS COOKIE ===============
+
+
+localStorage:
+
+Frontend controla:
+
+    localStorage.getItem()
+    localStorage.setItem()
+
+Problema:
+    - JavaScript consegue acessar
+    - XSS pode roubar
+
+
+Cookie HttpOnly:
+
+Backend controla:
+
+    Set-Cookie
+
+Vantagem:
+    - JavaScript não consegue ler
+    - Navegador envia automaticamente
+
+
+
+=============== CSRF (Cross-Site Request Forgery) ===============
+
+
+É um ataque onde um site malicioso tenta fazer o navegador de uma vítima enviar uma requisição para outro site onde ela já está autenticada:
+
+
+    Cookie é criado pelo próprio site (backend) após algum login e salvo pelo navegador.
+
+    - Usuário faz login em bank.com → backend envia Cookie: session=abc123 → navegador salva.
+    - Usuário entra em evil.com → site malicioso tenta chamar bank.com → navegador envia o cookie automaticamente.
+
+
+
+=============== FLUXO ===============
+
+
+Criar cookie:
+
+    ResponseCookie.from("refreshToken", token)
+    .httpOnly(true)
+    .secure(true)
+    .sameSite("Strict")
+
+
+Ler cookie:
+
+    @CookieValue("refreshToken")
+    String refreshToken
+
+
+    - withCredentials: true = usar no axios apontando pra url, permite Frontend mandar COOKIES
+    - configuration.setAllowCredentials(true); = no Cors permite mandar cookies pra url em questão

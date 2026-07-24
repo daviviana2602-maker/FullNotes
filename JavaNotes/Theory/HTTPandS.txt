@@ -1,0 +1,48 @@
+=============== HTTP and HTTPS =============== 
+
+
+HTTPS é a versão segura do HTTP.
+
+
+HTTP normal:
+
+    Seu navegador
+        |
+        |  dados em texto puro
+        |
+     Servidor
+
+Alguém no caminho (ex: uma rede Wi-Fi comprometida) poderia teoricamente interceptar a comunicação.
+
+
+
+HTTPS:
+
+    Seu navegador
+        |
+        |  dados criptografados 
+        |
+    Servidor
+
+A comunicação é protegida por criptografia usando TLS.
+
+
+
+Exemplo:
+
+    fez login:
+
+    POST /login
+
+    email=davi@email.com
+    password=123456
+
+
+HTTP = transmitido sem proteção.
+
+HTTPS = vai algo parecido com:  
+
+    a8f72h19x91k2s...
+
+
+Quem interceptar não consegue entender.
