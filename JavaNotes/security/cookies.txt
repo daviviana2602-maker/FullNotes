@@ -48,7 +48,8 @@ HttpOnly:
 
 
 Secure:
-    - Cookie só é enviado se a conexão for HTTPS (impede roubo de cookie por estar criptografado)
+    - se True, Cookie só é enviado se a conexão for HTTPS (impede roubo de cookie por estar criptografado)
+    - quando prody você cria uma propriedade que muda conforme o ambiente. (true pra prod e false pra dev)
 
 
 SameSite("Strict):
