@@ -1,0 +1,48 @@
+=============== Access Token ===============
+
+
+O Access Token é um JWT de curta duração (ex: 10 - 30 minutos).
+
+
+Ele é usado nas requisições normais da aplicação:
+
+    - O backend valida apenas a assinatura e as informações do token (JwtAuthenticationFilter + OncePerRequestFilter).
+    - Não é necessário consultar o banco em cada requisição.
+    - Possui baixa exposição caso seja roubado, pois expira rapidamente.
+
+
+=============== Refresh Token ===============
+
+
+O Refresh Token possui uma duração maior (ex: 7 - 90) e funciona como uma sessão persistente.
+
+Quando o Access Token expira:
+
+    1. O cliente envia o Refresh Token para /auth/refresh.
+    2. O backend valida o token consultando a sessão armazenada no banco.
+    3. Se estiver válido e não revogado, um novo Access Token é gerado.
+
+
+=============== Controle de Sessões ===============
+
+
+O Refresh Token pode ser armazenado como hash em uma tabela de sessões:
+
+
+Isso permite:
+
+- Revogar sessões específicas.
+- Fazer logout em todos os dispositivos.
+- Controlar acessos ativos.
+
+
+=============== Por que não usar apenas um token longo ===============
+
+
+Um único JWT de longa duração precisaria ser consultado no banco em todas as requisições para permitir revogação, perdendo parte da vantagem do JWT.
+
+Com Access + Refresh:
+
+
+- O Access Token mantém alta performance.
+- O Refresh Token garante controle e segurança.
