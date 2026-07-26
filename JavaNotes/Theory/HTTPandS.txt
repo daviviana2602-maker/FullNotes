@@ -1,8 +1,6 @@
 =============== HTTP and HTTPS =============== 
 
 
-HTTPS é a versão segura do HTTP.
-
 
 HTTP normal:
 
@@ -14,6 +12,9 @@ HTTP normal:
 
 Alguém no caminho (ex: uma rede Wi-Fi comprometida) poderia teoricamente interceptar a comunicação.
 
+
+
+HTTP + TLS = HTTP criptografado = HTTPS é a versão segura do HTTP.
 
 
 HTTPS:

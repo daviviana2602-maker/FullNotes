@@ -1,0 +1,30 @@
+=============== XSS (Cross-Site Scripting) ===============
+
+
+É um ataque onde um atacante consegue executar JavaScript malicioso no navegador
+de outro usuário dentro de um site:
+
+
+    O navegador acredita que aquele código faz parte do próprio site.
+
+    - Atacante injeta um script malicioso em uma página.
+    - Usuário acessa essa página.
+    - Navegador executa o JavaScript injetado.
+
+
+Esse JavaScript pode roubar dados acessíveis pelo navegador, como tokens
+armazenados no localStorage, capturar informações digitadas ou executar ações
+em nome do usuário.
+
+
+
+=============== CSRF (Cross-Site Request Forgery) ===============
+
+
+É um ataque onde um site malicioso tenta fazer o navegador de uma vítima enviar uma requisição para outro site onde ela já está autenticada:
+
+
+    Cookie é criado pelo próprio site (backend) após algum login e salvo pelo navegador.
+
+    - Usuário faz login em bank.com → backend envia Cookie: session=abc123 → navegador salva.
+    - Usuário entra em evil.com → site malicioso tenta chamar bank.com → navegador envia o cookie automaticamente.

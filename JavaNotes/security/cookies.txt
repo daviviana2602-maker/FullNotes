@@ -92,20 +92,6 @@ Vantagem:
     - Navegador envia automaticamente
 
 
-
-=============== CSRF (Cross-Site Request Forgery) ===============
-
-
-É um ataque onde um site malicioso tenta fazer o navegador de uma vítima enviar uma requisição para outro site onde ela já está autenticada:
-
-
-    Cookie é criado pelo próprio site (backend) após algum login e salvo pelo navegador.
-
-    - Usuário faz login em bank.com → backend envia Cookie: session=abc123 → navegador salva.
-    - Usuário entra em evil.com → site malicioso tenta chamar bank.com → navegador envia o cookie automaticamente.
-
-
-
 =============== FLUXO ===============
 
 
