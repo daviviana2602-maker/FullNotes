@@ -9,8 +9,8 @@
         @Bean
         RedisCacheConfiguration cacheConfiguration() {
 
-            Jackson2JsonRedisSerializer<Object> serializer =
-                    new Jackson2JsonRedisSerializer<>(Object.class);
+            // generic salva o tipo do objeto pra desserializar corretamente
+            GenericJackson2JsonRedisSerializer serializer = new GenericJackson2JsonRedisSerializer();
 
 
             return RedisCacheConfiguration.defaultCacheConfig()
@@ -23,10 +23,20 @@
 
 
 
-Quando:    @Cacheable(value = "products", key = "#page")
+- Redis não entende JSON, Java ou objetos. Ele só guarda bytes, mas esses bytes representam um texto JSON.
 
-- o Spring precisa transformar:         List<ListProductResponse>
-- em algo que o Redis consiga armazenar
+- Dentro do Redis, fica uma sequência de bytes:   10101100 01101010 11100010 00101010 ...
+
+- Por exemplo, o Redis poderia estar guardando algo que, quando interpretado, vira:
 
 
-Então trocamos a serialização padrão em bytes do Java por JSON para o Redis armazenar os objetos corretamente
+{
+  "@class": "com.example.ProductPageResponse",      (formato pra desserializar com Generic)
+  "products": [
+    {
+      "id": 1,
+      "name": "Bolo"
+    }
+  ],
+  "page": 0
+}
