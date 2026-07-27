@@ -107,42 +107,67 @@ curso_id
 
 
 ===============================================
-CASCADE
-===============================================
-
-Permite que operações sejam propagadas.
-
-@OneToMany(cascade = CascadeType.ALL)
-
-Excluir user
-↓
-
-Exclui orders.
-
-
-Tipos comuns:
-
-CascadeType.PERSIST
-CascadeType.MERGE
-CascadeType.REMOVE
-CascadeType.ALL
-
-
-
-===============================================
 FETCH
 ===============================================
 
 Define quando o relacionamento será carregado.
 
-LAZY
+
+- LAZY
 
 Carrega apenas quando necessário.
 
-@ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
 
-EAGER
+
+- EAGER
 
 Carrega imediatamente junto da entidade.
 
-@ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
+
+
+
+===============================================
+Problema N + 1
+===============================================
+
+
+O problema é: você pega uma lista de entidades e, para cada entidade, acessa um relacionamento que ainda não foi carregado.
+
+
+Exemplo:
+
+    List<OrderEntity> orders = orderRepository.findAll();
+
+
+Banco:
+
+    SELECT * FROM orders;
+
+    Vieram 100 pedidos (pegou tudo).
+
+    Cada pedido tem um usuário:
+
+    Pedido 1 -> João
+    Pedido 2 -> Maria
+    Pedido 3 -> Carlos
+    ...
+
+
+Aí você faz:
+
+    orders.stream()
+        .map(order -> order.getUser().getName())
+
+
+O Hibernate pensa:
+
+    Pedido 1 precisa do usuário João → query
+    Pedido 2 precisa do usuário Maria → query
+    Pedido 3 precisa do usuário Carlos → query
+
+
+Então vira:
+
+1 query para pedidos + 100 queries para usuários
