@@ -39,7 +39,7 @@ Exemplo:
     password=123456
 
 
-HTTP = transmitido sem proteção.
+HTTP = transmitido pela rede entre o seu computador (cliente) e um servidor web sem proteção.
 
 HTTPS = vai algo parecido com:  
 

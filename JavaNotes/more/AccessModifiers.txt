@@ -1,0 +1,23 @@
+====== private ====== 
+
+→ Só a própria classe acessa.
+→ É utilizado em DTOs por padrão e os dados são acessados/alterados com Getters e Setters
+
+
+====== public ====== 
+
+→ Qualquer classe acessa.
+
+
+====== final ====== 
+
+→ A referência só pode receber um valor uma única vez:
+
+    private final CreateOrderService createOrderService; no Controller só pode receber UM VALOR e não será mais alterado
+
+
+====== static ====== 
+
+    Recebe os dados, processa e devolve o resultado. Ele não precisa de um objeto para funcionar.
+
+    Geralmente recebe parâmetros, processa os dados e retorna o resultado.
