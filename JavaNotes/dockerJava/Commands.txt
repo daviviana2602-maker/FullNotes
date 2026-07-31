@@ -1,0 +1,38 @@
+---------- Docker commands ----------
+
+
+- testar instalação do Docker
+docker run hello-world
+
+
+- reseta tudo do Docker na sua máquina (agressivo)
+system prune -a --volumes
+
+
+- mostrar containers rodando
+docker ps
+
+
+- mostrar histórico
+docker ps -a
+
+
+- "desliga" o projeto (com -v ao final apaga tudo no banco inclusive tabelas)
+docker compose down
+
+
+- instalar e baixar o necessário (requirements) e subir o programa (se já tiver tudo baixado pode tirar o --build e rodar) (se colocar -d na frente ele roda sem mostrar os logs)
+docker compose up --build      
+
+
+- entrar no container a partir do nome dado a ele
+
+    docker exec -it NOMEDOCONTAINER bash
+
+vai aparecer algo assim:
+
+    root@f3506a809b0b:/app# (roda o comando necessário aqui na frente)
+
+
+- monitorar em tempo real o que está acontecendo nos containers (API + DB + outros serviços)
+docker compose logs -f 

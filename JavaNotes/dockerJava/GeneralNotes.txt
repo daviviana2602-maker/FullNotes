@@ -1,0 +1,59 @@
+---------- Docker Image ----------
+
+
+É um pacote pronto com tudo o que a aplicação precisa (ainda não está rodando).
+(DockerFile Define como uma Docker Image será criada.)
+
+
+Exemplo:
+
+- Java 21
+- Maven
+- Variáveis de ambiente
+- JAR da aplicação Spring Boot
+
+
+
+---------- Container ----------
+
+
+É um processo isolado executando uma Docker Image.
+
+Uma mesma Docker Image pode gerar vários Containers independentes.
+
+
+Iniciar um Container:
+
+    docker run nome-da-image
+
+
+
+---------- Por que usar Docker? ----------
+
+
+Docker garante que a aplicação rode da mesma forma em qualquer ambiente.
+
+Sem Docker:
+
+    Cada computador pode ter versões diferentes do Java, PostgreSQL, Redis ou outras dependências.
+    "Na minha máquina funciona."
+
+
+Com Docker:
+
+    Todos utilizam exatamente o mesmo ambiente definido no Dockerfile e no docker-compose.yml.
+
+
+
+---------- Por que usar Docker em projetos pessoais? ----------
+
+
+    → Demonstra conhecimento de uma ferramenta muito utilizada no mercado.
+
+    → Facilita a configuração do ambiente para quem quiser testar o projeto.
+
+    → Evita problemas de compatibilidade entre máquinas.
+
+    → Permite subir dependências como PostgreSQL e Redis com poucos comandos.
+
+    → Aproxima o projeto de um ambiente real de produção.
