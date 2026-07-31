@@ -44,7 +44,7 @@ entra em filtros de autorização
 Exemplo:
 @PreAuthorize("hasRole('ADMIN')")
 
-👉 o Spring faz internamente:
+o Spring faz internamente:
 “pega o SecurityContext → verifica role”
 
 
