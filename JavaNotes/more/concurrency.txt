@@ -1,4 +1,4 @@
-============ Lock Otimista (@Version) ============
+======================== Lock Otimista (@Version) ========================
 
 
 → Assume que conflitos são raros, então não bloqueia o registro no banco enquanto alguém está lendo ou alterando.
@@ -24,7 +24,7 @@
 
 
 
-============ Lock Pessimista (@Lock) ============
+======================== Lock Pessimista (@Lock) ========================
 
 
 → Assume que conflitos podem acontecer, então bloqueia o registro no banco desde o começo da operação e mantém durante.
@@ -49,7 +49,7 @@
 
 
 
-====== Concorrência e Race Condition ======
+============ Concorrência e Race Condition ============
 
 
 → Concorrência é quando duas ou mais operações tentam acessar ou alterar o mesmo recurso juntas.
@@ -74,3 +74,52 @@
             (request 2) 50 - 40 saldo = 10 (pois o banco lê no banco o saldo anterior ainda em 50, antes de ter sido atualizado pra 150)
 
         sendo que saldo deveria ser de 110 reais
+
+
+
+======================== Deadlock ========================
+
+
+→ Ocorre quando duas ou mais transações ficam esperando uma pela outra liberar um lock.
+
+
+    Exemplo, ao mesmo instante acontece:
+
+        Transação A:   pix da conta 1 pra conta 2
+
+            LOCK Conta 1
+                ↓
+            espera LOCK Conta 2
+
+
+        Transação B:  pix da conta 2 pra conta 1
+
+            LOCK Conta 2
+                ↓
+            espera LOCK Conta 1
+
+
+→ Nenhuma consegue continuar, pois cada uma aguarda a outra liberar o lock.
+
+→ O banco detecta o deadlock e cancela (ROLLBACK) uma das transações.
+
+
+    → Como evitar:
+
+    • Manter as transações curtas para reduzir o tempo em que os locks ficam ativos.
+
+    • Sempre adquirir os locks na mesma ordem (ex: menor ID → maior ID):
+
+
+            Transação A:   pix da conta 1 pra conta 2
+
+                LOCK Conta 1
+                    ↓
+                LOCK Conta 2
+
+
+            Transação B:  pix da conta 2 pra conta 1
+
+                agora ESPERA LOCK Conta 1
+                        ↓
+                e consequentemente ESPERA LOCK Conta 2
