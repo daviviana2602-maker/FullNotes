@@ -1,0 +1,27 @@
+============ Concorrência e Race Condition ============
+
+
+→ Concorrência é quando duas ou mais operações tentam acessar ou alterar o mesmo recurso juntas.
+
+- Transações não são executadas inteiramente uma de cada vez.
+
+    Exemplo:
+
+        A:  LÊ saldo = 100 ──────── calcula 100 - 40 ──────── SALVA (60)
+
+        B:  LÊ saldo = 100 (enquanto A calcula) ──────── calcula ──────── SALVA (sendo que o saldo estava em mudança para 60, porém B leu antes que A mudasse e usou valor antigo)
+
+
+
+→ Race Condition é quando a concorrência gera um resultado errado porque a ordem de execução altera o resultado.
+
+    Exemplo:
+
+
+        Se alguém tem 50 reais, eu mando 100 e a pessoa manda 40 pra outra conta ao mesmo tempo aconteceria race condition:
+
+            (request 1) 50 + 100
+            (request 2) 50 - 40 saldo = 10 (pois o banco lê no banco o saldo anterior ainda em 50, antes de ter sido atualizado pra 150)
+
+
+        sendo que saldo deveria ser de 110 reais

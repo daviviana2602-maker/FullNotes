@@ -1,0 +1,65 @@
+======================== Lock Otimista (@Version) ========================
+
+
+→ Assume que conflitos são raros, então não bloqueia o registro no banco enquanto alguém está lendo ou alterando.
+
+
+→ Cada registro possui uma versão:
+
+    Entity:
+        @Version
+        private Long version;
+
+
+    Migration:
+        ALTER TABLE product
+        ADD COLUMN version BIGINT NOT NULL DEFAULT 0;
+
+
+→ com @Version na entity, o Hibernate controla automaticamente a coluna de versão e incrementa +1 quando a entidade é alterada com sucesso.
+
+    - backend precisa quando listar algo, envia a version junto no retorno,
+    - depois o frontend retorna novamente a version para o backen pra conferir se a version que está tentando ser alterada ainda é a version do item a ser modificado
+
+
+EXEMPLO DE USO: 
+
+        dois médicos abrem a tela ao mesmo tempo, ou um abre enquanto o outro edita;
+
+        - o primeiro médico edita e salva:
+
+            joao
+            escoliose (era dor nas costas inicialmente)
+
+
+        o segundo medico abre a tela antiga do formulário e salva
+
+            joão Vieira (era joao)
+            dor nas costas (por request 'antiga' ainda estava na tela do formulário)
+
+        logo a escoliose foi anulada, foi sobreescrita pela dor nas costas novamente
+        
+
+
+======================== Lock Pessimista (@Lock) ========================
+
+
+→ Assume que conflitos podem acontecer, então bloqueia o registro no banco desde o começo da operação e mantém durante.
+
+→ Enquanto uma transação usa o dado, outras precisam esperar.
+
+
+→ No JPA:
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+
+→ O banco faz algo parecido com:
+
+    SELECT * FROM accounts
+    WHERE id = 1
+    FOR UPDATE;
+
+
+→ Usado quando duas alterações simultâneas podem causar problemas graves, exemplo:
+
+    Dois usuários fazem PIX na mesma conta; o banco trava a conta para evitar alterações simultâneas.
