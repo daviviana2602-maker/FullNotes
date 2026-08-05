@@ -1,0 +1,44 @@
+======================== Testcontainers ========================
+
+
+→ Biblioteca que permite usar containers Docker reais durante os testes.
+
+
+→ Em vez de mockar serviços como banco ou Redis, ele sobe uma instância real temporária.
+
+
+→ Diferente de Mockito:
+
+    Mockito:
+        cria objetos falsos/simulados.
+
+
+    Testcontainers:
+        cria infraestrutura real temporária.
+
+
+======================== Quando usar ========================
+
+
+Use Testcontainers para testar:
+
+
+Banco:
+
+    - JPA/Hibernate
+    - migrations Flyway
+    - queries
+    - constraints
+
+
+Redis:
+
+    - cache
+    - expiração de chave
+    - rate limit
+
+
+Kafka/RabbitMQ:
+
+    - publicação de eventos
+    - consumo de mensagens
