@@ -3,7 +3,6 @@
 
 → Biblioteca que permite usar containers Docker reais durante os testes.
 
-
 → Em vez de mockar serviços como banco ou Redis, ele sobe uma instância real temporária.
 
 
@@ -11,7 +10,6 @@
 
     Mockito:
         cria objetos falsos/simulados.
-
 
     Testcontainers:
         cria infraestrutura real temporária.
@@ -29,6 +27,7 @@ Banco:
     - migrations Flyway
     - queries
     - constraints
+    - locks
 
 
 Redis:
@@ -42,3 +41,8 @@ Kafka/RabbitMQ:
 
     - publicação de eventos
     - consumo de mensagens
+
+
+Executa testes na classe utilizando o mesmo container com banco utilizando seu próprio DockerDesktop,
+como Locks/cache e eventos tem ligação direta com banco, testamos com testcontainers para maior assertividade,
+enquanto testes de serviço em uma imensa parcela daz vezes já tem seu retorno em testes unitários que contém menos complexidade.

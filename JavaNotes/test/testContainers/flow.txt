@@ -9,23 +9,19 @@ Teste começa:
 
     2. Spring conecta nesse banco:
 
-
         jdbc:postgresql://localhost:porta_randomica/atlas
 
 
     3. Executa migrations:
-
 
         Flyway
 
 
     4. Roda os testes:
 
-
-        cria usuário
-        salva no banco
-        busca usuário
-
+        - cria usuário
+        - salva no banco
+        - busca usuário
 
 
     5. Finaliza:
