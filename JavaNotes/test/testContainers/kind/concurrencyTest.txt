@@ -1,0 +1,88 @@
+======= NOTES PRINCIPAIS DE TESTCONTAINER PARA CONCORRÊNCIA =======
+CONCEITO IMPORTANTE: (Uma thread é uma linha de execução do programa)
+
+
+@Testcontainers              // Habilita o gerenciamento automático dos containers no teste
+
+@SpringBootTest              // Sobe o contexto completo do Spring
+
+@TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)    // Injeta dependências pelo construtor
+
+
+class PixConcurrencyTest {
+
+
+    @Container                      // Container gerenciado pelo Testcontainers
+    @ServiceConnection              // Conecta automaticamente o Spring ao PostgreSQL
+    static PostgreSQLContainer<?> postgres =
+
+
+    @Test // Define o método como teste
+    void shouldPreventConcurrentPixFromSpendingSameBalance() throws Exception {
+
+
+        CountDownLatch ready = new CountDownLatch(2);   // Porta (ready que começa em 2) e abre (como consequência libera threads) quando = 0
+        CountDownLatch start = new CountDownLatch(1);   // Porta (start que começa em 1) e abre (como consequêncialibera threads) quando = 0
+
+
+        ExecutorService executor = Executors.newFixedThreadPool(2);     // thread 0 (principal) cria um pool com 2 threads
+
+
+                Future<Boolean> firstPix = executor.submit(() -> {      // Executor pega esse código e executa UMA das suas 2 threads
+
+                    ready.countDown();  // Informa que a thread 1 está pronta (ready (INICIALMENTE 2) - 1)
+
+                    start.await();      // Uma porta (thread 1 para na porta e espera), porta abre quando start = 0
+
+                    try {
+                        pixService.sendPix(
+                                "receiver@test.com",
+                                null,
+                                "PIX 1",
+                                new BigDecimal("80.00"),
+                                "123456"
+                        );
+
+                        return true;    // PIX executado com sucesso
+
+                    } catch (Exception e) {
+                        return false;   // PIX falhou
+                    }
+                });
+
+
+                Future<Boolean> secondPix = executor.submit(() -> {         // Executor pega esse código e executa MAIS UMA das suas 2 threads
+
+                    ready.countDown();      // Informa que a thread 2 está pronta ((ready (AGORA 1) - 1)) = DESTRAVA
+
+                    start.await();          // Uma porta (thread 2 para na porta e espera), porta abre quando start = 0
+
+                    try {
+                        pixService.sendPix(
+                                "receiver@test.com",
+                                null,
+                                "PIX 2",
+                                new BigDecimal("80.00"),
+                                "123456"
+                        );
+
+                        return true;    // PIX executado com sucesso
+
+                    } catch (Exception e) {
+                        return false;   // PIX falhou
+                    }
+                });
+
+
+        ready.await();          // thread 0 (principal) para aqui antes de TUDO e espera
+
+        start.countDown();      // quando ready = 0 (aberto), thread 0 bate aqui (start = 1 - 1 = 0), threads(1 e 2) paradas na porta start são liberadas ao mesmo tempo
+
+
+        executor.shutdown();    // Encerra o pool de threads
+
+        assertTrue(firstResult ^ secondResult);  // ^ especifíca que exatamente UM PIX (request) deve passar
+
+    }
+
+}
