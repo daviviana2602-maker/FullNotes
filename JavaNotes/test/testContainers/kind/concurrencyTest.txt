@@ -17,8 +17,13 @@ class PixConcurrencyTest {
     static PostgreSQLContainer<?> postgres =
 
 
-    @Test // Define o método como teste
+    @Test
     void shouldPreventConcurrentPixFromSpendingSameBalance() throws Exception {
+
+
+        Long senderId = sender.getId();
+        when(authenticatedService.getAuthenticatedUserId())  // mostrando quem está fazendo a request (aqui o sender faz as duas requests, então passamos o id dele pra ambas)
+                .thenReturn(senderId);
 
 
         CountDownLatch ready = new CountDownLatch(2);   // Porta (ready que começa em 2) e abre (como consequência libera threads) quando = 0
@@ -28,7 +33,7 @@ class PixConcurrencyTest {
         ExecutorService executor = Executors.newFixedThreadPool(2);     // thread 0 (principal) cria um pool com 2 threads
 
 
-                Future<Boolean> firstPix = executor.submit(() -> {      // Executor pega esse código e executa UMA das suas 2 threads
+                Future<Boolean> firstPix = executor.submit(() -> {      // CRIA UMA TAREFA (Executor pega esse código e executa UMA das suas 2 threadS)
 
                     ready.countDown();  // Informa que a thread 1 está pronta (ready (INICIALMENTE 2) - 1)
 
@@ -51,7 +56,7 @@ class PixConcurrencyTest {
                 });
 
 
-                Future<Boolean> secondPix = executor.submit(() -> {         // Executor pega esse código e executa MAIS UMA das suas 2 threads
+                Future<Boolean> secondPix = executor.submit(() -> {      // CRIA UMA TAREFA (Executor pega esse código e executa MAIS UMA das suas 2 threadS)
 
                     ready.countDown();      // Informa que a thread 2 está pronta ((ready (AGORA 1) - 1)) = DESTRAVA
 

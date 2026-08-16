@@ -1,0 +1,75 @@
+======= NOTES PRINCIPAIS DE TESTCONTAINER PARA DEADLOCK =======
+CONCEITO IMPORTANTE: (Uma thread é uma linha de execução do programa)
+
+
+    @Test
+    void shouldPreventConcurrentPixAgainstDeadlock() throws Exception {
+
+
+        when(authenticatedService.getAuthenticatedUserId()) // direcionando id conforme o pix feito (account de id 1 faz pix pra account de id 2 e vice versa)
+                .thenAnswer(invocation -> {
+
+                    String threadName = Thread.currentThread().getName();
+
+                    if (threadName.equals("pix-1")) {   // se nome da thread = pix-1 retorna id do senderOne como quem faz a request
+                        return senderOne.getId();
+                    }
+
+                    return senderTwo.getId();   // se não retorna id do senderTwo como quem faz a request
+                });
+
+
+
+        AtomicInteger threadNumber = new AtomicInteger(1);
+
+        ExecutorService executor = Executors.newFixedThreadPool(2, task -> {
+
+            Thread thread = new Thread(task);                           // task é o trabalho que será executado pela thread (executor.submit mostra tasks)
+
+            thread.setName("pix-" + threadNumber.getAndIncrement());    // nomeando as threads (pix-1 e pix-2) pra direcionar o id passado de acordo com quem envia/recebe o pix
+                                                                        // essa linha também pega 1 (inicial do Atomic) e depois incrementa + 1, threads começam em 1 e crescem 
+            return thread;
+
+        });
+
+
+        Future<Boolean> firstPix = executor.submit(() -> {      // primeira task (pix-1 referenciado = id do senderOne passado)
+
+            ready.countDown();
+            start.await();
+
+            try {
+                pixService.sendPix(
+                        "sendertwo@test.com",
+                        null,
+                        "PIX 1",
+                        new BigDecimal("20.00"),
+                        "123456"
+                );
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        });
+
+
+        Future<Boolean> secondPix = executor.submit(() -> {     // segunda task (pix-2 referenciado = id senderTwo passado)
+
+            ready.countDown();
+            start.await();
+
+            try {
+                pixService.sendPix(
+                        "senderone@test.com",
+                        null,
+                        "PIX 2",
+                        new BigDecimal("20.00"),
+                        "123456"
+                );
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        });
+
+    }
