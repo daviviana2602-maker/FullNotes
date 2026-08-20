@@ -39,6 +39,6 @@ Estar autenticado e dentro de tais Roles:
 
 2 - token é passado na requisição junto com dados
 
-3 - o JwtAuthenticationFilter roda automático , pega o token, limpa Bearer, cria e salva o objeto do usuário autenticado no SecurityContext
+3 - o JwtAuthenticationFilter roda automático , pega o token, limpa Bearer, lib JWT já checa expiration (Parser com verifyWith(key) no extractClaims) cria e salva o objeto do usuário autenticado no SecurityContext
 
 4 - DEPOIS o fluxo segue, bate no @PreAuthorize e checa o SecurityContext, ele testa se bate a Role, se bater ele segue, se não ele retorna 403
