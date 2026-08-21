@@ -1,0 +1,16 @@
+================= RabbitMQ — Config =================
+
+
+@Configuration
+public class RabbitMQConfig {
+
+    @Bean
+    public Queue pixQueue() {
+        return new Queue("pix.completed");
+    }
+
+}
+
+
+Queue:
+    fila onde as mensagens ficam aguardando consumo

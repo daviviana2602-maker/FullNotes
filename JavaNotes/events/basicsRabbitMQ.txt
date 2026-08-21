@@ -1,0 +1,17 @@
+================= RabbitMQ — Conceito =================
+
+
+RabbitMQ é um message broker (intermediário que gerencia a comunicação entre diferentes sistemas, aplicativos ou serviços)
+
+
+Fluxo básico:
+
+    Producer → RabbitMQ → Queue → Consumer
+
+    - Producer: publica mensagens
+    - Queue: armazena mensagens
+    - Consumer: recebe/processa mensagens
+    - RabbitMQ: transporta e gerencia as mensagens
+
+
+O RabbitMQ não sabe o significado da mensagem, ele apenas transporta a mensagem entre Producer e Consumer
