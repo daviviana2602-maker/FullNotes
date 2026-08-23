@@ -4,29 +4,29 @@
 @Configuration
 public class RabbitConfig {
 
-    public static final String QUEUE = "email.queue";
-    public static final String EXCHANGE = "atlas.exchange";         // Início do RabbitConfig é onde se dão nomes/valores para os exchanges, queues e routing keys
-    public static final String ROUTING_KEY = "user.registered";
+    public static final String EMAIL_QUEUE = "email.queue";
+    public static final String ATLAS_EXCHANGE = "atlas.exchange";         // Início do RabbitConfig é onde se dão nomes/valores para os exchanges, queues e routing keys
+    public static final String USER_REGISTERED_ROUTING_KEY = "user.registered";
 
 
     @Bean
-    public Queue emailQueue() {             // Cria uma queue/fila chamada email.queue
-        return new Queue(QUEUE, true);
+    public Queue emailQueue() {                 // Cria uma queue/fila chamada email.queue
+        return new Queue(EMAIL_QUEUE, true);
     }
 
 
     @Bean
     public DirectExchange exchange() {          // Cria um Exchange chamado atlas.exchange (o Producer publica no Exchange, não diretamente na queue)
-        return new DirectExchange(EXCHANGE);      // O Exchange é o roteador, sem ele o Producer ficaria acoplado àquela queue
+        return new DirectExchange(ATLAS_EXCHANGE);      // O Exchange é o roteador, sem ele o Producer ficaria acoplado àquela queue
     }
 
 
     @Bean
-    public Binding binding(Queue emailQueue, DirectExchange exchange) {    // "Quando mensagem no atlas.exchange com a routing key user.registered, mande para email.queue"
+    public Binding binding(Queue emailQueue, DirectExchange exchange) {    // Quando mensagem no atlas.exchange com a routing key user.registered, mande para email.queue
         return BindingBuilder
-                .bind(emailQueue)
-                .to(exchange)
-                .with(ROUTING_KEY);
+                .bind(emailQueue)                       // ligar essa Queue/Fila
+                .to(exchange)                           // a esse Exchange
+                .with(USER_REGISTERED_ROUTING_KEY);     // quando a mensagem chegar com a Routing Key: user.registered.
     }
 
 
@@ -57,7 +57,7 @@ Exemplo:
 
                                             Usuário cria conta
                                                     ↓
-                    Producer publica mensagem no Exchange com ROUTING_KEY: "user.registered"
+                    Producer publica mensagem no Exchange com USER_REGISTERED_ROUTING_KEY: "user.registered"
                                                     ↓
         Backend envia Email e SMS quando a conta é criada (dois serviços diferentes - duas queues/filas diferentes)
                                                     ↓
