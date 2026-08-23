@@ -8,37 +8,44 @@ PIX de 1500 reais:
 ██████████ ✓ concluído em 100ms
 
 
-Email ou SMS lento (é realizado pós pix acima de 1000 reais):
+Email (é realizado pós pix acima de 1000 reais):
 ████████████████████████████████ 10 minutos
 
 
+------------------------------------------------------------
 
-Sem assíncrono:
 
-   PIX (JÁ ACONTECEU)
+Sem processamento assíncrono:
+
+        PIX 
          ↓
-   espera email
+    PIX concluído
          ↓
-      espera SMS
+   espera envio do email
          ↓
-   só apos TUDO, responde usuário
+   Resend demora / está fora do ar
+         ↓    
+   tela do usuário: "Realizando Pix..."⏳⏳⏳
+         ↓
+   só após TUDO, responde usuário
 
 
 Com RabbitMQ:
 
-                              PIX (JÁ ACONTECEU)
+                                    PIX 
                                      ↓
-                              publica eventos
+                               PIX concluído
+                                     ↓ 
+                           publica eventos/mensagens
                                      ↓
    já responde usuário e deixa serviços secundários processarem no seu próprio tempo
-                        (processam quando ouvem o evento)
+            (Consumer consome a mensagem da queue no tempo dele)
 
 
 Enquanto isso:
 
    RabbitMQ
-   ├──→ Consumer Email
-   └──→ Consumer SMS
+   └──→ Consumer Email
 
 
 - CONCLUSÃO:
