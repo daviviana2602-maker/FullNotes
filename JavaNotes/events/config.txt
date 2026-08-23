@@ -29,6 +29,16 @@ public class RabbitConfig {
                 .with(ROUTING_KEY);
     }
 
+
+
+    @Bean   // Serialização (similar a feita com Redis)
+    public Jackson2JsonMessageConverter jackson2JsonMessageConverter(ObjectMapper objectMapper) {
+
+    return new Jackson2JsonMessageConverter(objectMapper);    // Quando mandar um objeto Java para o Rabbit, transforme em JSON
+                                                              // Quando receber, transforme JSON de volta em objeto Java
+
+    }   
+
 }
 
 
