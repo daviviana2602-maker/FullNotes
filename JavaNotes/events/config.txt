@@ -2,15 +2,53 @@
 
 
 @Configuration
-public class RabbitMQConfig {
+public class RabbitConfig {
+
+    public static final String QUEUE = "email.queue";
+    public static final String EXCHANGE = "atlas.exchange";         // Início do RabbitConfig é onde se dão nomes/valores para os exchanges, queues e routing keys
+    public static final String ROUTING_KEY = "user.registered";
+
 
     @Bean
-    public Queue pixQueue() {
-        return new Queue("pix.completed");
+    public Queue emailQueue() {             // Cria uma queue/fila chamada email.queue
+        return new Queue(QUEUE, true);
+    }
+
+
+    @Bean
+    public DirectExchange exchange() {          // Cria um Exchange chamado atlas.exchange (o Producer publica no Exchange, não diretamente na queue)
+        return new DirectExchange(EXCHANGE);      // O Exchange é o roteador, sem ele o Producer ficaria acoplado àquela queue
+    }
+
+
+    @Bean
+    public Binding binding(Queue emailQueue, DirectExchange exchange) {    // "Quando mensagem no atlas.exchange com a routing key user.registered, mande para email.queue"
+        return BindingBuilder
+                .bind(emailQueue)
+                .to(exchange)
+                .with(ROUTING_KEY);
     }
 
 }
 
 
-Queue:
-    fila onde as mensagens ficam aguardando consumo
+================= RabbitMQ — Concept =================
+
+
+Se temos 3 queues (3 filas):     Fila A, Fila B, Fila C
+
+
+- O Producer publica uma mensagem no Exchange com a routing key:  user.registered
+
+- O Exchange sabe pra qual fila essa mensagem deve ir de acordo com o Binding, dessa forma o Producer não precisa ficar apontando pra filas específicas (desacoplamento)
+
+
+Exemplo:
+
+                                            Usuário cria conta
+                                                    ↓
+                    Producer publica mensagem no Exchange com ROUTING_KEY: "user.registered"
+                                                    ↓
+        Backend envia Email e SMS quando a conta é criada (dois serviços diferentes - duas queues/filas diferentes)
+                                                    ↓
+Essa ROUTING KEY vai ser utilizada em 2 Queus diferentes (queue do SMS e queue do Email), então o Exchange manda pras duas conforme o Binding

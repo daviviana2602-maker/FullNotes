@@ -2,16 +2,18 @@
 
 
 RabbitMQ é um message broker (intermediário que gerencia a comunicação entre diferentes sistemas, aplicativos ou serviços)
+O RabbitMQ não sabe o significado da mensagem, ele apenas transporta a mensagem entre Producer e Consumer.
 
 
-Fluxo básico:
+================= Message Words =================
 
-    Producer → RabbitMQ → Queue → Consumer
 
-    - Producer: publica mensagens
-    - Queue: armazena mensagens
-    - Consumer: recebe/processa mensagens
     - RabbitMQ: transporta e gerencia as mensagens
 
-
-O RabbitMQ não sabe o significado da mensagem, ele apenas transporta a mensagem entre Producer e Consumer
+    - Producer: publica mensagens (no Exchange)
+    - Queue: fila onde as mensagens aguardam consumo (armazena mensagens)
+    - Consumer: recebe/processa mensagens
+    
+    - Exchange  = recebe a mensagem e decide para onde ela vai (para qual Queue/Fila)
+    - Binding   = regra que liga Exchange → Queue
+    - Routing Key = etiqueta usada nessa regra
