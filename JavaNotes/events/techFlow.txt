@@ -1,0 +1,52 @@
+================= Flow de criação de conta com RabbitMQ no AtlasBank =================
+
+(Sendo considerado para explicação meu projeto AtlasBank, parte de criação de usuário. Projeto presente no GitHub.)
+
+
+    1. Conta é criada
+
+            ↓
+
+    2. UserRegisteredEvent é criado e Producer publica (CreateAccountService)
+
+            ↓
+
+    rabbitTemplate.convertAndSend(
+        ATLAS_EXCHANGE,
+        USER_REGISTERED_ROUTING_KEY,
+        event
+    )
+
+            ↓
+
+    4. event é convertido para mensagem JSON
+        
+            ↓
+
+    5. Mensagem JSON chega no atlas.exchange
+
+            ↓
+
+    6. Exchange olha a Routing Key:
+        "user.registered"
+
+            ↓
+
+    7. Binding diz:
+        "user.registered" tem que ir para EMAIL_QUEUE
+
+            ↓
+
+    8. Exchange coloca mensagem na email.queue
+
+            ↓
+
+    9. EmailConsumer recebe/esculta
+
+            ↓
+
+    10. event é convertido novamente para UserRegisteredEvent (objeto Java)
+
+            ↓
+
+    11. Email é enviado (Resend)
