@@ -1,0 +1,106 @@
+================= Flow de criação de conta com RabbitMQ no AtlasBank =================
+
+(Sendo considerado para explicação meu projeto AtlasBank, parte de criação de usuário. Projeto presente no GitHub.)
+
+
+    1. Conta é criada
+
+            ↓
+
+    2. UserRegisteredEvent é criado e Producer publica (CreateAccountService)
+
+            ↓
+
+    rabbitTemplate.convertAndSend(
+        ATLAS_EXCHANGE,
+        USER_REGISTERED_ROUTING_KEY,
+        event
+    )
+
+            ↓
+
+    4. event é convertido para mensagem JSON
+        
+            ↓
+
+    5. Mensagem JSON chega no atlas.exchange
+
+            ↓
+
+    6. Exchange olha a Routing Key:
+        "user.registered"
+
+            ↓
+
+    7. Binding diz:
+        "user.registered" tem que ir para EMAIL_QUEUE
+
+            ↓
+
+    8. Exchange coloca mensagem na email.queue
+
+            ↓
+
+    9. EmailConsumer recebe/esculta
+
+            ↓
+
+    10. event é convertido novamente para UserRegisteredEvent (objeto Java)
+
+            ↓
+
+    11. Email é enviado (Resend)
+
+
+================= Test flow do RabbitMQ com uso do RabbitPanel =================
+
+
+→ Abrir o RabbitMQ Management:   http://localhost:15672
+
+→ Exchanges
+→ atlas.exchange
+→ Sessão Publish message
+
+
+        Routing key:
+
+                user.registered
+
+        Payload:
+
+                {
+                "email": "seu@email.com",
+                "token": "abc123"
+                }
+
+
+        → Publish message (publicar a mensagem)
+
+
+Resultado esperado:
+
+           atlas.exchange
+
+                ↓ (quando atlas.exchange recebe user.registered o binding faz o exchange mandar a message para email.queue)
+
+           email.queue
+
+                ↓
+
+           EmailConsumer (ouve a mensagem na email.queue)
+
+                ↓
+
+        EmailService (responsável por montar o email e chamar o resendClient.sendEmail)
+
+                ↓
+
+        Resend (dispara email)
+
+                ↓
+
+          email recebido
+
+
+- Esse teste mostra o ciclo completo de funcionamento
+- A mensagem foi publicada diretamente pelo RabbitPanel, não passando pelo CreateAccountService, então podemos verificar que não teremos o usuário no banco de dados
