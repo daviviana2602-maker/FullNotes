@@ -2,7 +2,10 @@
 
 
 RabbitMQ é um message broker (intermediário que gerencia a comunicação entre diferentes sistemas, aplicativos ou serviços)
+
 O RabbitMQ não sabe o significado da mensagem, ele apenas transporta a mensagem entre Producer e Consumer.
+
+Utilizamos o Spring AMQP para a integração entre o Spring e o RabbitMQ.
 
 
 ================= Message Words =================
