@@ -5,8 +5,6 @@ RabbitMQ é um message broker (intermediário que gerencia a comunicação entre
 
 O RabbitMQ não sabe o significado da mensagem, ele apenas transporta a mensagem entre Producer e Consumer.
 
-Utilizamos o Spring AMQP para a integração entre o Spring e o RabbitMQ.
-
 
 ================= Message Words =================
 
@@ -20,3 +18,12 @@ Utilizamos o Spring AMQP para a integração entre o Spring e o RabbitMQ.
     - Exchange  = recebe a mensagem e decide para onde ela vai (para qual Queue/Fila)
     - Binding   = regra que liga Exchange → Queue
     - Routing Key = etiqueta usada nessa regra
+
+
+================= SpringAMQP e RabbitPanel =================    
+
+
+- Utilizamos o Spring AMQP para a integração entre o Spring e o RabbitMQ.
+
+- O RabbitMQ Panel serve para monitorar e gerenciar o servidor de mensageria RabbitMQ através de uma interface com:
+métricas de desempenho, controle de filas, conexões e segurança do sistema em um único painel acessível pelo navegador
