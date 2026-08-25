@@ -3,7 +3,7 @@
 (Sendo considerado para explicação meu projeto AtlasBank, parte de criação de usuário. Projeto presente no GitHub.)
 
 
-    1. Conta é criada
+    1. Conta é criada e já retorna ok pro front (usuário não fica esperando)
 
             ↓
 
@@ -50,6 +50,7 @@
             ↓
 
     11. Email é enviado (Resend)
+
 
 
 ================= Test flow do RabbitMQ com uso do RabbitPanel =================
