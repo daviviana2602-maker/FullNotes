@@ -1,0 +1,72 @@
+=============== Issues ===============
+
+
+1️⃣ Criar uma Issue
+
+# GitHub → Issues → New issue
+
+# Issue = tarefa/problema a ser desenvolvido.
+
+# Exemplo:
+# "Criar endpoint de cadastro de produtos"
+
+
+2️⃣ Labels
+
+# Servem para categorizar a Issue.
+
+# Exemplos:
+    # feature
+    # bug
+    # backend
+    # frontend
+    # priority: high
+
+
+3️⃣ Assignee
+
+# É o dev responsável pela Issue.
+
+# Exemplo:
+    # Assignee: @davi
+
+
+4️⃣ Dev pega a Issue
+
+# Dev se atribui ou já é atribuido à Issue e cria uma branch:
+
+    - Na página da issue, no menu lateral direito, tem a seção 'Development'.
+    - Clica em 'Create a branch' para criar uma branch a partir da issue.
+    - O GitHub já sugere um nome baseado no título da issue e já linka automaticamente essa branch à issue.
+
+    Depois para trazer a branch pro computador dele, no terminal:
+    
+    git checkout develop
+    git pull
+    git checkout feature/25-create-product
+
+    # O número da branch corresponde à Issue #25.
+
+
+5️⃣ Desenvolvimento
+
+# Dev desenvolve e faz commits normalmente:
+
+git add .
+git commit -m "feat: create product endpoint"
+git push
+
+
+6️⃣ Pull Request
+
+# Abre o PR:
+
+feature/25-create-product → develop
+
+# No PR:
+
+    Closes #25
+
+# Após CI + Code Review + Merge:
+
+    Issue #25 é fechada automaticamente.
