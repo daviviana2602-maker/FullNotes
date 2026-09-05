@@ -19,6 +19,11 @@ O RabbitMQ não sabe o significado da mensagem, ele apenas transporta a mensagem
     - Binding   = regra que liga Exchange → Queue
     - Routing Key = etiqueta usada na regra do Binding
 
+    - Retry = nova tentativa de processar uma mensagem que falhou.
+    - Backoff = intervalo de espera entre as tentativas de Retry.
+    - ACK = Quando o consumer processa a mensagem com sucesso, o Spring faz o ACK/acknowledgment (remove a mensagem da fila)
+    - DLQ (Dead Letter Queue) = fila para mensagens que falharam várias vezes e não foram processadas
+
 
 ================= SpringAMQP e RabbitPanel =================    
 
@@ -27,3 +32,31 @@ O RabbitMQ não sabe o significado da mensagem, ele apenas transporta a mensagem
 
 - O RabbitMQ Panel serve para monitorar e gerenciar o servidor de mensageria RabbitMQ através de uma interface com:
 métricas de desempenho, controle de filas, conexões e segurança do sistema em um único painel acessível pelo navegador
+
+
+================= Retry Concept =================
+
+
+Exemplo de uso: 
+
+    - usuário cria conta: Resend está fora do ar, logo o Consumer falha e faz ACK por padrão (remove a mensagem e o email nunca vai ser enviado)
+
+    - agora pra resolver precisamos tentar enviar o email novamente x vezes a cada x minutos, sem fazer ACK
+    (conforme configuração do Retry no application.yml)
+
+
+Se a mensagem falhou várias vezes e não foi processada, a ideia é não ficar tentando infinitamente e também não simplesmente perder a mensagem:
+
+    - então a colocamos numa DLQ (fila de mensagens mortas para analisar/reprocessar depois)
+
+
+EXEMPLO DE RETRY CONFIG no application.yml:
+
+  rabbitmq:
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 4               # a tentativa inicial já conta, então é 1 no minuto 0 e mais 3 a cada 7 minutos
+          initial-interval: 420000      # milissegundos (7 minutos)
+          multiplier: 1                 # multiplica o intervalo anterior a cada retry (1 não multiplica nada)

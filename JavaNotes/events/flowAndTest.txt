@@ -3,53 +3,65 @@
 (Sendo considerado para explicação meu projeto AtlasBank, parte de criação de usuário. Projeto presente no GitHub.)
 
 
-    1. Conta é criada e já retorna ok pro front (usuário não fica esperando)
+    1. Conta é criada e já retorna OK pro front
+       (usuário não fica esperando o envio do email)
 
             ↓
 
-    2. UserRegisteredEvent é criado e Producer publica (CreateAccountService)
+    2. UserRegisteredEvent é criado e o Producer publica
+       (CreateAccountService)
 
             ↓
 
-    rabbitTemplate.convertAndSend(
-        ATLAS_EXCHANGE,
-        USER_REGISTERED_ROUTING_KEY,
-        event
-    )
+    3. Event é convertido para uma mensagem JSON
 
             ↓
 
-    4. event é convertido para mensagem JSON
-        
-            ↓
-
-    5. Mensagem JSON chega no atlas.exchange
+    4. Mensagem JSON chega no atlas.exchange
 
             ↓
 
-    6. Exchange olha a Routing Key:
-        "user.registered"
+    5. Exchange olha a Routing Key:
+       "user.registered"
 
             ↓
 
-    7. Binding diz:
-        "user.registered" tem que ir para EMAIL_QUEUE
+    6. Binding diz:
+       "user.registered" → USER_REGISTERED_QUEUE
 
             ↓
 
-    8. Exchange coloca mensagem na email.queue
+    7. Exchange coloca a mensagem na USER_REGISTERED_QUEUE
 
             ↓
 
-    9. EmailConsumer recebe/esculta
+    8. EmailConsumer recebe/escuta a mensagem
 
             ↓
 
-    10. event é convertido novamente para UserRegisteredEvent (objeto Java)
+    9. Mensagem JSON é convertida novamente para
+       UserRegisteredEvent (objeto Java)
 
             ↓
 
-    11. Email é enviado (Resend)
+    10. EmailConsumer tenta enviar o email pelo Resend
+
+            ↓
+          SUCESSO
+            ↓
+           ACK  (Mensagem é removida da fila)
+
+          OU
+
+          FALHA
+            ↓
+       Retry entra em ação
+            ↓
+       espera 7 minutos e tenta novamente 3 vezes (além da primeira vez que deu falha, totalizando 4 tentativas)
+            ↓
+       caso falhar em todas, mensagem é descartada, visto que foram 21 minutos e token tem duração de 30
+            ↓
+       usuário precisa mandar outra solicitação    
 
 
 

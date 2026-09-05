@@ -42,12 +42,6 @@ Com RabbitMQ:
             (Consumer consome a mensagem da queue no tempo dele)
 
 
-Enquanto isso:
-
-   RabbitMQ
-   └──→ Consumer Email
-
-
 - CONCLUSÃO:
 
    O PIX já aconteceu, então não faz sentido prender a resposta ao usuário por SERVIÇOS SECUNDÁRIOS que podem demorar ou estar indisponíveis.
