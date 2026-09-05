@@ -60,3 +60,18 @@ EXEMPLO DE RETRY CONFIG no application.yml:
           max-attempts: 4               # a tentativa inicial já conta, então é 1 no minuto 0 e mais 3 a cada 7 minutos
           initial-interval: 420000      # milissegundos (7 minutos)
           multiplier: 1                 # multiplica o intervalo anterior a cada retry (1 não multiplica nada)
+
+
+- COMO TESTAR O RETRY:
+
+    - Reduzir Backoff do Retry
+
+    - Retornar uma exceção com mensagem no Listener antes de executar qualquer coisa (simulando erro vindo do serviço externo):
+    - exemplo:  
+        System.out.println("TEST RETRY");
+        throw new RuntimeException("RETRY TEST EXCEPTION");
+
+
+    - Criar mensagem no RabbitPannel/Exchange ou realizar request no Swagger
+
+    - Olhar terminal e ver prints
