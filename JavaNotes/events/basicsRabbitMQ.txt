@@ -17,7 +17,7 @@ O RabbitMQ não sabe o significado da mensagem, ele apenas transporta a mensagem
     
     - Exchange  = recebe a mensagem e decide para onde ela vai (para qual Queue/Fila)
     - Binding   = regra que liga Exchange → Queue
-    - Routing Key = etiqueta usada nessa regra
+    - Routing Key = etiqueta usada na regra do Binding
 
 
 ================= SpringAMQP e RabbitPanel =================    

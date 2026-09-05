@@ -9,7 +9,7 @@ PIX de 1500 reais:
 
 
 Email (é realizado pós pix acima de 1000 reais):
-████████████████████████████████ 10 minutos
+████████████████████████████████ Resend está lento e demora 5 minutos ou mais
 
 
 ------------------------------------------------------------
@@ -38,7 +38,7 @@ Com RabbitMQ:
                                      ↓ 
                            publica eventos/mensagens
                                      ↓
-   já responde usuário e deixa serviços secundários processarem no seu próprio tempo
+   já responde usuário: "Pix realizado com sucesso!", e deixa serviços secundários processarem no seu próprio tempo
             (Consumer consome a mensagem da queue no tempo dele)
 
 

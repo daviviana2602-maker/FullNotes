@@ -11,7 +11,7 @@ public class RabbitConfig {
 
     @Bean
     public Queue emailQueue() {                 // Cria uma queue/fila chamada email.queue
-        return new Queue(EMAIL_QUEUE, true);
+        return new Queue(EMAIL_QUEUE, true);    // durable = True significa que a FILA sobrevive ao restart do RabbitMQ
     }
 
 
