@@ -1,0 +1,34 @@
+================= Webhook — Conceito =================
+
+
+Webhook é usado para receber notificações de eventos que aconteceram em um serviço externo, através de requisições HTTP que esse serviço envia para o seu sistema.
+
+Diferente de uma API tradicional, onde nosso sistema faz uma requisição para buscar ou enviar algo,
+no Webhook o sistema externo é quem chama nosso sistema para nos avisar sobre um evento.
+
+
+================= Webhook Words =================
+
+
+    - Provider: serviço externo que envia o Webhook
+      Ex: Resend
+
+    - Webhook: mecanismo para um sistema externo enviar notificações para o nosso sistema
+
+    - Event: acontecimento que dispara o Webhook
+    Ex: email.bounced, email.delivered
+
+
+================= Exemplo =================
+
+- Você deixa um gancho (endpoint) disponível, e quando algo acontece no serviço externo, ele "fisga" esse endpoint mandando os dados do evento.
+
+      Resend
+        ↓
+    detecta que o e-mail sofreu Bounce (quando o e-mail não consegue ser entregue ao destinatário)
+        ↓
+    POST /webhooks/resend (nosso endpoint)
+        ↓
+    Nosso Backend
+        ↓
+    processa o evento
