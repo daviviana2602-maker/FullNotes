@@ -19,6 +19,7 @@ EXEMPLO DE RETRY CONFIG no application.yml:
           enabled: true
           max-attempts: 4               # a tentativa inicial já conta, então é 1 no minuto 0 e mais 3 (1 a cada 7 minutos)
           initial-interval: 420000      # milissegundos (7 minutos)
+          max-interval: ${INITIAL_INTERVAL}   # intervalo máximo com mesma duração do initial-interval
           multiplier: 1                 # multiplica o intervalo anterior a cada retry (1 não multiplica nada)
 
 
