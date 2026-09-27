@@ -32,19 +32,13 @@ OR lógico
 
 
 
-==================== LISTAS, SETS E MAPS ====================
+==================== LISTS, ARRAYS, SETS E MAPS ====================
 
 
-// CRIAÇÃO
+// LIST - Tamanho dinâmico
 
-List<String> list = new ArrayList<>();
-
-HashMap<String, Integer> map = new HashMap<>();
-
-Set<Integer> set = new HashSet<>();
-
-
-// LIST / ARRAYLIST
+List<String> list = new ArrayList<>();        
+List<Integer> nums = List.of(2, 7, 11, 15);    
 
 list.add("gato");
 list.get(0);
@@ -53,9 +47,21 @@ list.remove(0);
 list.size();
 list.contains("gato");
 list.isEmpty();
+list.indexOf(number)            // mostra lugar do número na lista (indice)
+
+
+// ARRAY - Tamanho fixo
+
+String[] array = {"João", "Maria", "Pedro"};
+int[] numbers = {1, 2, 3, 4};
+
+char[] arrayS = s.toCharArray();        // transforma a palavra num array de caracteres
+Arrays.sort(list);                  // ordena o array em ordem alfabética
 
 
 // SET / HASHSET
+
+Set<Integer> set = new HashSet<>();
 
 set.add(10);
 set.remove(10);
@@ -65,7 +71,9 @@ set.isEmpty();
 set.clear();
 
 
-// HASHMAP
+// MAP / HASHMAP
+
+HashMap<String, Integer> map = new HashMap<>();
 
 map.put("Davi", 18);
 map.get("Davi");
