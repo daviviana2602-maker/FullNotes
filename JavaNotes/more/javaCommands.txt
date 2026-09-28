@@ -84,6 +84,9 @@ map.size();
 map.isEmpty();
 map.clear();
 
+String reversedWord = new StringBuilder(word).reverse().toString();   // TRANSFORMA a palavra ao contrário
+
+
 ==================== STREAM LISTA ====================
 
 
