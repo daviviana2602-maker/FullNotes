@@ -47,7 +47,7 @@ list.remove(0);
 list.size();
 list.contains("gato");
 list.isEmpty();
-list.indexOf(number)            // mostra lugar do número na lista (indice)
+list.indexOf(number)            // mostra lugar do número na lista (índice)
 
 
 // ARRAY - Tamanho fixo
@@ -57,6 +57,8 @@ int[] numbers = {1, 2, 3, 4};
 
 char[] arrayS = s.toCharArray();        // transforma a palavra num array de caracteres
 Arrays.sort(list);                  // ordena o array em ordem alfabética
+
+numberIndex++ DENTRO DO LOOP FOR para nos localizar dentro do array, sabendo o índice dos números (pra cada loopada numberIndex = numberIndex + 1)
 
 
 // SET / HASHSET
