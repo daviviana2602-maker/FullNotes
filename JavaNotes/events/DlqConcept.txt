@@ -66,12 +66,23 @@ agora queremos tentar reprocessar essa mensagem por períodos (1 em 1 hora por e
 
                     try {           // Começa a tentativa de republicação.
 
+
+                        channel.confirmSelect();       // habilita o modo publisher confirms no canal (ativa o mecanismo de confirmação)
+
+
                         channel.basicPublish(                               // Publica a mensagem novamente.
                                 RabbitConfig.ATLAS_EXCHANGE,                // no atlas.exchange
                                 RabbitConfig.USER_REGISTERED_ROUTING_KEY,   // com a user.registered.routing.key (Binding já passa pra queue)
                                 response.getProps(),                        
                                 response.getBody()           // com o corpo da mensagem original (evento com userId e email originalmente enviado por exemplo)
                         );
+
+
+                        boolean confirmed = channel.waitForConfirms(5000);  // Espera até 5 segundos pela confirmação do RabbitMQ de que a mensagem foi publicada corretamente
+
+                        if (!confirmed) {           
+                            return false;           // Evita dar ack numa mensagem da DLQ que não foi publicada com sucesso
+                        }
 
                         
                         channel.basicAck(                                   // Publicou no Exchange, da ACK da mensagem na DLQ
