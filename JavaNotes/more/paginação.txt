@@ -67,3 +67,6 @@ Controller (formato para paginação):
                 page
         );
     }
+
+- a URL ficaria:
+        GET /boards/42/list?page=2

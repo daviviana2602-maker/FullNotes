@@ -2,6 +2,13 @@
 =============== Formato Controller ===============
 
 
+@RequestBody →      dados enviados no corpo, normalmente usando DTOs. Ex.: login, cadastro e refresh token.
+
+@PathVariable →     identifica um recurso pelo caminho. Ex.: /users/15.
+
+@RequestParam →     filtros, opções e paginação na URL. Ex.: /users?page=0&size=20&name=Davi.
+
+
 POST → sem id no request (a menos que vá verificar se um recurso existe pra criar outro, nesse contexto se aplica mesma regra do PUT/PATCH)
 -EXEMPLO:
 
