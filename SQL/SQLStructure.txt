@@ -1,0 +1,32 @@
+=============== ESTRUTURA E TRANSAÇÕES ===============
+
+
+- Variáveis sempre entre aspas simples 'x'
+
+
+CREATE TABLE = cria tabela
+    CREATE TABLE account (
+        id BIGSERIAL PRIMARY KEY,
+        user_id BIGINT NOT NULL UNIQUE,
+        balance NUMERIC(19,2) NOT NULL DEFAULT 0.00,
+
+        CONSTRAINT fk_accounts_user
+            FOREIGN KEY (user_id)
+            REFERENCES users(id)
+            ON DELETE CASCADE
+        );
+
+
+ALTER TABLE = altera tabela
+    ALTER TABLE users ADD COLUMN email VARCHAR(255) UNIQUE NOT NULL;
+
+
+CREATE INDEX = cria índice
+    CREATE INDEX idx_users_email ON users(email);
+
+
+BEGIN = inicia transação
+COMMIT = confirma transação
+ROLLBACK = desfaz alterações não confirmadas
+
+    ATENÇÃO: UPDATE e DELETE sem WHERE podem afetar todos os registros.

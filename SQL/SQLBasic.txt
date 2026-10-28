@@ -1,0 +1,48 @@
+=============== SQL — COMANDOS BÁSICOS ===============
+
+
+* = TUDO
+    select u.name, a.* (retorna a row do account INTEIRA)
+    from account a
+    inner join users u on a.user_id = u.id
+
+SELECT = consulta dados
+    SELECT * FROM users;
+
+WHERE = filtra registros
+    SELECT * FROM users WHERE id = 1;
+
+INSERT = insere registro
+    INSERT INTO users (name, email) VALUES ('Davi', 'davi@email.com');
+
+UPDATE = atualiza registro
+    UPDATE users SET name = 'Davi' WHERE id = 1;
+
+DELETE = exclui registro
+    DELETE FROM users WHERE id = 1;
+
+
+ORDER BY = ordena resultados
+    SELECT * FROM users ORDER BY name ASC;
+
+DESC = ordena em ordem decrescente (maior para menor)
+    SELECT balance FROM accounts ORDER BY balance DESC;
+
+ASC = ordena em ordem crescente (menor para maior)
+    SELECT balance FROM accounts ORDER BY balance ASC;
+
+
+AND / OR = combina condições
+    WHERE role = 'USER' AND status = 'ACTIVE';
+
+BETWEEN = filtra intervalo
+    WHERE balance BETWEEN 10 AND 100;
+
+IS NULL = verifica valores nulos
+    WHERE cpf IS NULL;
+
+IN = verifica valores de uma lista
+    WHERE role IN ('USER', 'ADMIN');
+
+LIMIT = limita a quantidade de registros retornados
+    SELECT * FROM accounts LIMIT 3;

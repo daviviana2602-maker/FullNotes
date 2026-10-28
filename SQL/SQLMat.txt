@@ -1,0 +1,30 @@
+=============== SQL — CONTAS ===============
+
+
+SUM() = soma os valores de uma coluna
+    SELECT SUM(balance) FROM accounts;
+
+AVG() = calcula a média dos valores
+    SELECT AVG(balance) FROM accounts;
+
+MIN() = retorna o menor valor
+    SELECT MIN(balance) FROM accounts;
+
+MAX() = retorna o maior valor
+    SELECT MAX(balance) FROM accounts;
+    
+
++ = soma valores
+    SELECT balance + 10 FROM accounts;
+
+- = subtrai valores
+    SELECT balance - 5 FROM accounts;
+
+* = multiplica valores
+    SELECT balance * 2 FROM accounts;
+
+/ = divide valores
+    SELECT balance / 2 FROM accounts;
+
+% = retorna o resto da divisão (módulo)
+    SELECT 10 % 3; -- resultado: 1

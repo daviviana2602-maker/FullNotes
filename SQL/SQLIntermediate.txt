@@ -1,0 +1,22 @@
+=============== SQL — COMANDOS INTERMEDIÁRIOS ===============
+
+
+COUNT(*) AS = conta registros e define um alias/nome para o resultado
+    SELECT COUNT(*) AS total FROM users;
+
+COUNT AS + GROUP BY = agrupa registros que possuem o mesmo valor em uma coluna
+    SELECT role, COUNT(*) AS total FROM users GROUP BY role;
+
+
+INNER JOIN = retorna registros que possuem relacionamento nas duas tabelas (mostra somente os usuários que possuem uma conta correspondente)
+    select u.name, a.balance
+    from account a
+    inner join users u on a.user_id = u.id
+
+LEFT JOIN = retorna todos os registros da tabela à esquerda, mesmo sem correspondência na direita (mostra todos os usuários, mesmo sem conta (account = NULL))
+    select u.name, a.balance
+    from users u
+    left join account a on u.id = a.user_id
+
+ON = define a condição usada para relacionar as tabelas
+    INNER JOIN accounts a ON a.user_id = u.id;
