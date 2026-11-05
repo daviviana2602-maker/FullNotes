@@ -1,0 +1,19 @@
+==================== TASK MANAGER ====================
+
+
+- Ctrl + Shift + Esc
+
+
+- Task Manager (Gerenciador de Tarefas): 
+
+    - Ver processos e aplicativos em execução.
+    - Identificar consumo elevado de CPU, memória ou disco.
+    - Encerrar aplicativos travados.
+    - Verificar programas iniciados com o Windows.
+
+
+Exemplo:
+
+    Um usuário diz que o computador está extremamente lento.
+    Você abre o Task Manager e percebe que o disco está em 100% de utilização.
+    Isso ajuda a identificar um possível gargalo de desempenho.

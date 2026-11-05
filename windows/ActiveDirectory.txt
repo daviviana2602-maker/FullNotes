@@ -1,0 +1,32 @@
+==================== ACTIVE DIRECTORY (AD) ====================
+
+
+- powershell --> dsa.msc
+
+
+- Active Directory (AD)
+    serviço de diretório (Microsoft) utilizado em ambientes corporativos para centralizar o gerenciamento de usuários, computadores, grupos e autenticação.
+
+
+Imagine uma empresa com 500 funcionários (Sem gerenciamento centralizado, cada computador teria contas próprias independentes.)
+Com Active Directory, a empresa pode administrar contas e acessos centralmente.
+
+
+        Termo	                                    Significado
+    Domain	                                    Domínio corporativo
+    Domain Controller (DC)	        Servidor que executa serviços do domínio, incluindo AD DS e autenticação
+    User	                                    Conta de usuário
+    Group	                                    Grupo de usuários
+    Organizational Unit (OU)	      Unidade organizacional para organizar objetos
+    Domain account	                       Conta corporativa do domínio
+    Local account	                     Conta existente no próprio computador
+
+
+- Active Directory (AD) serve para:
+
+    - Desbloquear contas bloqueadas.
+    - Redefinir senhas.
+    - Verificar se uma conta está desabilitada.
+    - Adicionar usuários a grupos autorizados, conforme procedimento e aprovação.
+    - Investigar problemas de autenticação.
+    - Escalar problemas que exigem privilégios ou conhecimentos superiores.

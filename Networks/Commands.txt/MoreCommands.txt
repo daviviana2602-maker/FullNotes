@@ -15,7 +15,7 @@
       7             11 ms    10 ms     8 ms             ths-186-209-15-177.v4.thsprovider.com.br [186.209.15.177]
       8             25 ms    12 ms    12 ms             198.18.31.97
       9             12 ms    12 ms    12 ms             198.18.205.1
-      10             12 ms   12 ms    12 ms             198.18.1.224
+      10            12 ms   12 ms    12 ms              198.18.1.224
       11            160 ms   130 ms   120 ms            207-135-215-9.seaborn.net [207.135.215.9]
       12              *        *        *               Esgotado o tempo limite do pedido.
       13              *        *        *               Esgotado o tempo limite do pedido.

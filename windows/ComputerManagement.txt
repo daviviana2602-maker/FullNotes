@@ -1,0 +1,16 @@
+==================== COMPUTER MANAGEMENT ====================
+
+
+- powershell --> netplwiz ou lusrmgr.msc
+
+
+- Computer Management (Gerenciamento do Computador): 
+    usuários locais, discos, serviços e outros recursos administrativos.
+
+    
+Permite visualizar e administrar algumas configurações de contas locais (Conta local existe no computador / Conta de domínio é gerenciada pelo ambiente corporativo).
+
+    - User account: conta de usuário.
+    - Administrator: conta com privilégios administrativos.
+    - Standard user: usuário com permissões limitadas.
+    - Permissions: permissões que determinam o que um usuário pode acessar ou executar.

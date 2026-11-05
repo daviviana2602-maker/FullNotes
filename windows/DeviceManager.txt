@@ -1,0 +1,18 @@
+==================== DEVICE MANAGER ====================
+
+
+- powershell --> devmgmt.msc
+
+
+- Device Manager (Gerenciador de Dispositivos):
+    Permite visualizar os dispositivos de hardware e seus drivers.
+
+    - Network adapters → adaptadores de rede.
+    - Display adapters → placa gráfica.
+    - Audio inputs and outputs → dispositivos de áudio.
+
+Se um dispositivo apresentar um ícone amarelo, pode haver algum problema com o driver ou dispositivo.
+
+
+- Driver: 
+    software que permite ao sistema operacional se comunicar com um dispositivo de hardware.

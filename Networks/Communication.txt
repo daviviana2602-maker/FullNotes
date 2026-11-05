@@ -1,0 +1,37 @@
+==================== COMMUNICATION ====================
+
+
+- Wi-Fi
+Quando seu computador envia um pacote pelo Wi-Fi:
+
+    1. Os dados digitais são transformados em sinais de rádio.
+    2. O computador transmite ondas eletromagnéticas.
+    3. Essas ondas se propagam pelo ambiente, inclusive atravessando paredes (com perda de intensidade).
+    4. A antena do roteador recebe essas ondas.
+    5. O roteador interpreta o sinal e recupera os dados transmitidos.
+
+
+- Cabo Ethernet
+Quando você conecta seu computador ao roteador por um cabo Ethernet:
+
+    1. Os dados são codificados em sinais elétricos.
+    2. Esses sinais percorrem os fios de cobre dentro do cabo.
+    3. A interface de rede do roteador recebe os sinais.
+    4. O roteador decodifica os dados.
+
+
+- Dados móveis
+
+    1.Seu celular se conecta à torre de telefonia.
+    2.A operadora autentica seu chip (SIM) na rede.
+    3.A rede da operadora estabelece uma conexão de dados para seu dispositivo.
+    4.Seu celular recebe configurações de rede, incluindo um endereço IP.
+    5.Você consegue acessar a internet através da infraestrutura da operadora.
+
+
+- Modo avião
+
+    - Rede celular: desativada.
+    - Wi-Fi: desativado inicialmente.
+    - Bluetooth: desativado inicialmente.
+    - Conexão com torres de telefonia: interrompida.
