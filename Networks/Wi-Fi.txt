@@ -1,0 +1,39 @@
+==================== WI-FI ====================
+
+- Wi-Fi
+    Tecnologia que permite conectar dispositivos a uma rede local sem utilizar cabos, por meio de comunicação sem fio.
+
+    - Notebook conectado ao roteador por Wi-Fi.
+    - Celular conectado ao mesmo roteador.
+    - Impressora conectada à rede sem fio.
+    Todos podem participar da mesma LAN, mesmo sem utilizar cabos Ethernet.
+
+
+- SSID (Service Set Identifier)
+    nome da rede Wi-Fi.
+    Quando você abre a lista de redes Wi-Fi disponíveis no notebook, os nomes apresentados são SSIDs.
+
+
+- Conectado ao Wi-Fi ≠ conectado à internet
+
+    O notebook mostra que está conectado ao Wi-Fi.
+    Recebeu IP corretamente.
+    Consegue conversar com outros dispositivos da rede.
+    Mas não consegue abrir nenhum site.
+
+    O Wi-Fi estabelece a conexão sem fio com a rede local. Ele não garante que o gateway, a internet ou o DNS estejam funcionando.
+
+
+- Intensidade do sinal Wi-Fi    
+
+    Imagine que um funcionário está conectado ao Wi-Fi, mas:
+    - A conexão cai constantemente.
+    - A internet fica extremamente lenta.
+
+    Uma possível causa é sinal fraco, por distância do roteador, obstáculos físicos ou interferência.
+
+
+- Frequências Wi-Fi
+
+    - 2,4 GHz: costuma ser melhor quando você está mais distante do roteador (comparado ao 5GHz).
+    - 5 GHz: costuma oferecer velocidades maiores quando você está relativamente próximo.

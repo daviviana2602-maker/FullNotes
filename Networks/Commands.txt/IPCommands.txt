@@ -1,0 +1,22 @@
+==================== IP COMMANDS ====================
+
+
+- ipconfig
+    mostra a configuração IP das interfaces de rede do computador.
+
+
+- ipconfig /all (ipconfig com mais detalhes)
+    - Endereço físico (MAC).
+    - Servidor DHCP.
+    - Servidores DNS.
+    - Se o DHCP está habilitado.
+    - Quando o lease foi obtido e quando expira (Concessão).
+
+
+- ipconfig /release
+    Libera a configuração IPv4 obtida por DHCP na interface selecionada (O computador deixa de usar o IP que tinha recebido.)
+    Podemos especificar uma interface usando: ipconfig /release "Nome"
+
+- ipconfig /renew
+    Solicita uma nova configuração IP ao servidor DHCP.
+    Podemos especificar uma interface usando: ipconfig /renew "Nome"

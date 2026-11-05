@@ -1,0 +1,33 @@
+==================== VPN ====================
+
+
+- VPN (Virtual Private Network)
+    Tecnologia que estabelece uma conexão protegida através de uma rede existente,
+    permitindo que dispositivos acessem recursos de uma rede privada remotamente, geralmente utilizando criptografia.
+
+
+Imagine que você trabalha remotamente para uma empresa canadense.
+Seu computador está na sua casa, conectado ao roteador doméstico. Você precisa acessar sistemas e servidores internos da empresa.  
+
+    - Você liga seu computador em casa.
+    - Conecta-se normalmente à internet.
+    - Abre o cliente VPN da empresa.
+    - Informa suas credenciais e realiza a autenticação.
+    - A VPN estabelece um túnel criptografado até a infraestrutura corporativa.
+    - Você consegue acessar os recursos internos aos quais possui permissão.
+
+
+- VPN Corporativa (conectar remotamente seu computador à rede privada da empresa, de maneira protegida, para acessar recursos internos.)
+
+    Você trabalha em uma empresa e ela possui um sistema interno de RH, mas esse sistema não está disponível publicamente na internet (http://10.20.5.30/rh)
+    Esse endereço só funciona dentro da rede corporativa.
+
+    Você está em casa. Seu computador não pertence à rede da empresa, então não consegue acessar esse sistema.
+    Com a VPN corporativa, você se conecta a rede da empresa e consegue acessar o sistema após auth
+
+
+- VPN comercial (NordVPN e Proton VPN)
+
+    Alterar seu IP público de saída.
+    Simular uma localização em outro país.
+    Proteger o tráfego entre seu dispositivo e o servidor VPN (tráfego entre o computador e o servidor VPN é criptografado)

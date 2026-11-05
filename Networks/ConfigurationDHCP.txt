@@ -1,0 +1,69 @@
+==================== DHCP, LEASE e DORA ====================
+
+
+- DHCP Server
+    Dispositivo ou serviço responsável por distribuir configurações de rede automaticamente (Próprio router, Servidor dedicado/virtual..)
+
+- DHCP (Dynamic Host Configuration Protocol): 
+    Protocolo que permite que dispositivos recebam automaticamente configurações de rede de um servidor DHCP.
+
+
+Cada computador precisa de algumas configurações para conseguir se comunicar corretamente:
+
+    - Endereço IP.
+    - Subnet Mask.
+    - Gateway padrão.
+    - Servidor DNS.
+
+Agora imagine precisar configurar manualmente todas essas informações em cada computador (trabalhoso, demorado e maior chance de erros)
+
+
+Como funciona na prática?
+
+    Você acabou de conectar seu notebook ao Wi-Fi da empresa (ainda não possui uma configuração IPv4 válida para aquela rede)
+    Ele precisa solicitar essas informações ao servidor DHCP.
+
+    1. O notebook procura um servidor DHCP.
+    2. O servidor oferece uma configuração de rede disponível (Pode já conter: IP, Subnet Mask, Gateway e DNS)
+    3. O notebook solicita aquela configuração.
+    4. O servidor confirma a atribuição
+
+
+- DHCP Lease: período durante o qual um dispositivo pode utilizar o endereço IP concedido pelo servidor DHCP.
+
+    Empresa com 500 funcionários, mas apenas 300 pessoas trabalhando simultaneamente.
+    Se cada computador recebesse um IP permanentemente, muitos endereços ficariam ocupados por dispositivos que nem estão conectados.
+
+    Com Lease:
+    1. Um funcionário conecta seu notebook e recebe 192.168.1.35.
+    2. Ele utiliza o computador durante o expediente.
+    3. Depois, sai da empresa e fica duas semanas sem conectar.
+    4. A concessão expira e o endereço pode voltar ao conjunto de endereços disponíveis.
+    5. Outro dispositivo pode receber aquele IP.
+
+
+- DORA (como o DHCP entrega um IP):
+
+    Imagine que um computador acabou de entrar na rede e ainda não possui um endereço IP válido.
+
+    1. Discover - descoberta
+    O computador procura servidores DHCP disponíveis na rede. Como ainda não conhece o servidor, envia uma mensagem de descoberta em broadcast.
+
+    2. Offer - oferta 
+    O servidor DHCP responde oferecendo um endereço IP disponível e as configurações necessárias.
+
+    3. Request - solicitação
+    O computador informa que deseja utilizar aquele endereço IP.
+
+    4. Acknowledge - confirmação
+    O servidor confirma a atribuição e o computador pode configurar sua interface de rede.
+
+
+
+==================== APIPA ====================
+
+
+APIPA (Automatic Private IP Addressing), também conhecida como endereço link-local IPv4.
+
+    Quando o Windows tenta obter um IP automaticamente pelo DHCP, mas não consegue, ele pode atribuir sozinho um IP adress na faixa: 169.254.x.x
+    Isso geralmente indica que o computador não conseguiu obter uma configuração DHCP válida.    

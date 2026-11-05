@@ -1,0 +1,33 @@
+==================== PING COMMANDS ====================
+
+- O que é o ping?
+    O ping testa se seu computador consegue obter resposta de outro dispositivo pela rede.
+    Envia uma mensagem chamada ICMP Echo Request e espera uma resposta chamada ICMP Echo Reply.
+
+
+- ping DESTINO (O destino pode ser um endereço IP ou um domínio.)
+
+    - Testar o gateway (ping 192.168.1.1)
+    - Testar DNS (ping google.com)
+    - Testar conectividade (ping 8.8.8.8)
+
+    Se não houver resposta: Esgotado o tempo limite do pedido (No Windows, o ping espera 4 segundos por pacote antes de retornar erro).
+
+    Pode indicar:
+    - Gateway indisponível.
+    - Problema de conexão local.
+    - Firewall bloqueando ICMP (a mensagem).
+    - Alguma falha no caminho.
+
+
+- ping -t 8.8.8.8
+    Executa o teste continuamente até você interromper com Ctrl + C (Ping contínuo)
+
+
+- FLOW:
+
+    1 - Você executa o comando com um domínio (ping stats.deadbydaylight.com).
+    2 - Seu computador consulta o servidor DNS configurado para descobrir o IP correspondente ao domínio (se o DNS tiver fora da rede local, também precisa passar pelo Gateway).
+    3 - O DNS responde com o IP Adress correspondente: 52.85.78.90.
+    4 - Seu computador verifica se o destino está na rede local. Como não está, encaminha o pacote ao gateway (geralmente router).
+    5 - O pacote atravessa a rede até chegar ao destino, que pode responder com ICMP Echo Reply.

@@ -1,0 +1,23 @@
+==================== DNS ====================
+
+
+DNS (Domain Name System) (computador, servidor ou equipamento de rede que executa um serviço DNS)
+    serviço responsável por traduzir nomes de domínio em endereços IP,
+    permitindo que dispositivos localizem servidores e serviços utilizando nomes em vez de  precisar memorizar endereços IP.
+
+
+O DNS funciona como uma espécie de agenda telefônica: você procura um nome e recebe o endereço correspondente.
+
+    Imagine que você abre o navegador e digita: www.google.com
+    Como o computador sabe para qual IP adress precisa enviar a comunicação?
+
+    Você digita no navegador: google.com
+    Consulta DNS - DNS retorna um IP adress
+    O navegador pode iniciar a comunicação com o servidor.
+
+
+- 8.8.8.8 e 8.8.4.4 são os DNS públicos do Google
+- 1.1.1.1 e 1.0.0.1 são os DNS públicos da CloudFlare
+
+- DNS externo precisa passar pelo Gateway
+- Caso se tenha um DNS interno configurado, vai direto pela LAN

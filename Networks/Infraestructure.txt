@@ -1,0 +1,98 @@
+==================== SWITCH ====================
+
+
+Um switch (comutador de rede) é um equipamento que conecta vários dispositivos dentro de uma rede local, permitindo que eles se comuniquem dentro da LAN via quadros Ethernet.
+
+Imagine um escritório com 10 computadores, uma impressora e um servidor.
+
+Todos precisam estar conectados à rede. O switch permite conectar esses dispositivos por cabos Ethernet e encaminhar os dados entre eles.
+
+
+1. O computador A precisa enviar um arquivo para o computador B.
+2. O computador A envia os dados para o switch.
+3. O switch identifica o dispositivo de destino.
+4. Ele encaminha os dados para a porta à qual o computador B está conectado.
+
+
+O switch utiliza os MAC adress dos dispositivos para aprender onde cada dispositivo está conectado e encaminhar os quadros Ethernet.
+
+Ele não simplesmente transmite tudo para todos os computadores. Normalmente, encaminha os dados para a porta correspondente ao destino, quando já conhece esse destino.
+
+
+==================== ROUTER ====================
+
+
+Router (roteador): equipamento ou função responsável por encaminhar pacotes entre redes.
+E isso inclui a internet e outras redes privadas.
+
+
+Temos:
+    - PC: 192.168.1.10
+    - Celular: 192.168.1.11
+    - Roteador: 192.168.1.1
+    - Esses dispositivos pertencem à mesma LAN: 192.168.1.0/24
+    (O /24 indica quantos dos 32 bits são utilizados para identificar a rede, então 8 bits identificam os dispositivos dentro dessa rede)
+
+    Seu PC consegue conversar diretamente com seu celular pela LAN, sem precisar passar pela internet (que é outra rede).
+
+
+- E se você quiser acessar o Google?
+    O Google está em outra rede, fora da sua LAN.
+
+    - Seu PC quer acessar um servidor do Google.
+    - Percebe que o endereço IP de destino não pertence à sua rede local.
+    - Envia o pacote para seu gateway padrão (o roteador).
+    - O roteador consulta sua tabela de roteamento.
+    - Encaminha o pacote para a próxima rede, em direção ao destino.
+
+
+==================== SUBNET MASK ====================
+
+
+Subnet Mask responde a uma pergunta:
+    "O dispositivo para o qual quero enviar uma informação está na minha rede local ou preciso enviar essa informação para o roteador/gateway?"
+
+
+Imagine que seu PC tem:
+
+    - IP: 192.168.1.10
+    - Subnet mask: 255.255.255.0  (Cada 255 indica que aquele octeto inteiro é utilizado para identificar a rede)
+
+    SITUAÇÃO 1: Ele quer enviar uma mensagem para outro dispositivo, um celular com IP 192.168.1.20
+
+    - O PC usa a subnet mask para descobrir que o celular pertence à mesma rede (192.168.1.0/24).
+    - O PC pode enviar os dados diretamente pela rede local, sem precisar encaminhá-los ao roteador.
+
+    SITUAÇÃO 2: Ele quer enviar uma mensagem para outro dispositivo, um servidor com IP 8.8.8.8
+
+    - O PC percebe que esse endereço não pertence à sua rede local.
+    - O PC encaminha os dados para o gateway, normalmente o roteador, que vai cuidar do encaminhamento.
+
+
+Tabela pra reconhecimento de uso de Bits por octeto:
+
+    Valor do octeto	    Bits	Significado
+    255	11111111	     8      bits de rede
+    254	11111110	     7      bits de rede
+    252	11111100	     6      bits de rede
+    248	11111000	     5      bits de rede
+    240	11110000	     4      bits de rede
+    224	11110000	     3      bits de rede
+    192 11000000         2      bits de rede
+    128	10000000	     1      bits de rede
+     0	00000000	     0      bits de rede
+
+
+==================== GATEWAY ====================
+
+
+Gateway: ponto de saída de uma rede para alcançar outras redes.
+    Na maioria das redes domésticas, essa função é desempenhada pelo roteador 
+    (Sendo o endereço IP do dispositivo para o qual seu computador envia tráfego destinado a outras redes).
+
+    Se o gateway padrão estiver configurado incorretamente/função de roteamento estiver indisponível, os dispositivos podem continuar se comunicando dentro da LAN,
+    mas perdem o acesso a redes externas.
+
+
+Imagine que seu computador está dentro de uma rede local (LAN).
+Ele consegue conversar diretamente com outros dispositivos da mesma rede, mas precisa de uma saída para alcançar redes externas (gateway padrão).

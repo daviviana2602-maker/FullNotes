@@ -1,0 +1,48 @@
+==================== PORTAS DE REDE ====================
+
+
+O IP identifica um dispositivo na rede. Mas um dispositivo pode executar vários serviços simultaneamente.
+Por exemplo, um servidor pode hospedar um site, aceitar conexões remotas e oferecer DNS.
+A porta identifica qual serviço ou aplicação deve receber determinada comunicação naquele dispositivo.
+
+
+    - IP = endereço do prédio.
+    - Porta = número da sala.
+    - Serviço = atividade realizada naquela sala.
+
+
+- Porta fechada: não existe um serviço aceitando conexões naquela porta, ou o serviço não está disponível.
+- Porta bloqueada: uma regra de firewall ou outro mecanismo impede a comunicação.
+
+
+PORTAS IMPORTANTES (Important ports):
+
+        Porta	Protocolo/serviço	                Utilidade                           Transporte habitual
+         80	         HTTP	             Acesso a sites sem criptografia TLS                    TCP 
+         443	     HTTPS	                  Acesso seguro a sites                           TCP/UDP
+         53	         DNS	                    Resolução de nomes                            TCP/UDP
+         22	         SSH	                   Acesso remoto seguro                             TCP
+        3389	     RDP	               Área de Trabalho Remota do Windows                  TCP/UDP
+         25	         SMTP	              Envio de e-mails entre servidores                     TCP
+
+
+==================== FIREWALL ====================
+
+
+- Firewall 
+    Mecanismo de segurança que controla o tráfego de rede, permitindo ou bloqueando conexões conforme regras definidas.
+    Pode bloquear por IP adress de origem/destino, porta, protocolo...
+
+O Firewall pode decidir:
+    - Permitir conexões pela porta 443 (HTTPS).
+    - Bloquear conexões pela porta 3389 (RDP).
+    - Permitir conexões apenas de determinados endereços IP.
+    - Bloquear conexões vindas de redes não autorizadas.
+
+    Um Firewall pode existir no próprio computador, no router, em um servidor ou em um equipamento dedicado da empresa.
+
+
+- FLOW:
+    1 - Computador do funcionário (192.168.1.10) - Solicitação TCP pela porta 443
+    2 - Firewall - Regra permite 443 - Verifica a comunicação conforme suas regras
+    3 - Servidor da empresa (192.168.1.50)

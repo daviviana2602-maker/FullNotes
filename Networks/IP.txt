@@ -1,0 +1,69 @@
+==================== IP ====================
+
+
+- O que é um IP (Internet Protocol):
+
+    Um IP adress é um endereço atribuído a uma interface (computador, celuar...) de rede para permitir sua identificação e comunicação dentro de uma rede IP.
+
+    É como o endereço de uma residência: para entregar uma correspondência, você precisa saber para onde enviá-la.
+    Dentro da mesma rede/sub-rede, dois dispositivos utilizando o mesmo IP podem gerar um conflito de endereçamento.
+
+- Para que serve o IP (Internet Protocol):
+
+    O endereço IP (Internet Protocol) permite que dispositivos:
+
+    1. Identifiquem suas interfaces de rede.
+    2. Identifiquem a origem e o destino dos pacotes.
+    3. Se comuniquem com outros dispositivos.
+    4. Acessem serviços e recursos em outras redes, quando existe conectividade e roteamento adequado.
+
+
+- IP adress é o endereço atribuído a uma interface (pc, celular...) da rede podendo ser repetido em redes públicas, porém sem repetição para evitar problemas em redes privadas
+- IP (Internet Protocol) é responsável pelo endereçamento e encaminhamento de pacotes, utilizando o IP adress de origem e destino para permitir a comunicação entre redes
+- Esse conjunto é o funcionamento de uma "rede IP" (rede na qual dispositivos utilizam o protocolo IP para se comunicar)
+
+
+==================== IPv4 ====================
+
+
+O IPv4 é uma versão do protocolo IP que utiliza endereços de 32 bits.
+Um endereço IPv4 é representado por quatro números separados por pontos (4,3 bilhões de endereços possíveis).
+
+
+Exemplos de endereços IPv4:
+
+    - Impressora: 192.168.1.20
+    - Roteador: 192.168.1.1
+
+    Cada número representa um octeto/byte = 8 bits.
+    Cada octeto pode assumir valores entre 0 e 255 (8 bits permitem representar 256 valores diferentes).
+
+
+==================== PUBLIC AND PRIVATE IPs ====================
+
+
+- IP privado: utilizado dentro de redes locais, como residências e empresas. Não é diretamente roteável pela internet pública.
+
+As três faixas privadas IPv4 são:
+
+        Faixa	                Endereços
+    Classe A privada	10.0.0.0 até 10.255.255.255
+    Classe B privada	172.16.0.0 até 172.31.255.255
+    Classe C privada	192.168.0.0 até 192.168.255.255
+
+
+- IP público: endereço utilizado para identificar uma interface ou conexão na internet pública, sendo roteável globalmente.
+
+    Seu computador: 192.168.1.10 (privado).
+    Seu roteador: possui uma interface na rede local e outra voltada para a internet, que pode ter um IP público.
+
+
+==================== Static and Dynamic IPs ====================
+
+
+Dynamic IP: 
+    atribuído automaticamente, normalmente pelo DHCP (Lease pode fazer a rotação de IPs por tempo)
+
+Static IP: 
+    configurado manualmente ou reservado para determinado dispositivo 
+    (podendo ser também para um router ou servidor mantendo um endereço previsível).

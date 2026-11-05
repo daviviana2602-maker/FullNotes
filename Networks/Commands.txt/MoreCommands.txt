@@ -1,0 +1,49 @@
+==================== TRACERT ====================
+
+
+- tracert (Identificar os saltos intermediários no caminho até um destino / Rastrear as rotas)
+
+    Exemplo, Rastreando a rota para stats.deadbydaylight.com (tracert stats.deadbydaylight.com):
+
+    Saltos    Tempo de resposta de cada tentativa       IP adress do dispositivo
+      1             3 ms     2 ms     2 ms              10.19.75.86
+      2             17 ms    4 ms     4 ms              XX530V [192.168.98.1]
+      3             19 ms    7 ms     7 ms              10.0.0.1
+      4             13 ms    15 ms     7 ms             172.18.100.1
+      5             18 ms    8 ms     8 ms              172.16.25.2
+      6             26 ms    14 ms    16 ms             198.19.255.17
+      7             11 ms    10 ms     8 ms             ths-186-209-15-177.v4.thsprovider.com.br [186.209.15.177]
+      8             25 ms    12 ms    12 ms             198.18.31.97
+      9             12 ms    12 ms    12 ms             198.18.205.1
+      10             12 ms   12 ms    12 ms             198.18.1.224
+      11            160 ms   130 ms   120 ms            207-135-215-9.seaborn.net [207.135.215.9]
+      12              *        *        *               Esgotado o tempo limite do pedido.
+      13              *        *        *               Esgotado o tempo limite do pedido.
+      14           154 ms   116 ms   116 ms             server-52-85-78-90.mia50.r.cloudfront.net [52.85.78.90]
+
+
+    * * * = salto não respondeu às sondagens dentro do tempo limite (No Windows, cerca de 4 segundos por pacote antes de retornar erro).
+    Não significa necessariamente falha de conexão. Se os saltos seguintes respondem, é uma evidência de que o tráfego conseguiu continuar passando.
+    O destino pode não responder, assim não sabemos pelo tracert se chegou ou não (ele vai até o limite de saltos para tentar receber uma resposta)
+
+==================== NSLOOKUP ====================
+
+
+- nslookup (Name Server Lookup) - Diagnóstico de DNS
+    Consulta servidores DNS para verificar a resolução de nomes de domínio.
+    Ajuda a descobrir se um nome, como google.com, está sendo associado a um endereço IP.
+
+    nslookup google.com - Exemplo de resultado:
+
+    Servidor:  dns.google
+    Address:   8.8.8.8
+    Nome:      google.com
+    Addresses: 142.250.218.14
+
+
+Podemos escolher também qual servidor DNS desejamos consultar:
+
+    nslookup google.com 8.8.8.8
+    nslookup google.com 1.1.1.1
+
+    Nesse caso, estamos pedindo ao DNS público do Google/Cloudflare que resolva o domínio.

@@ -1,0 +1,30 @@
+==================== RESPONSE INFOS ====================
+
+
+- Adaptador (adapter)
+uma interface de rede. Pode ser física (Wi-Fi/Ethernet) ou virtual (VPN).
+
+- Tempo (ms): 
+    quanto demorou para receber a resposta. Menor geralmente significa menor latência.
+
+- TTL (Time To Live): 
+    campo do pacote IP que limita quantos roteadores ele pode atravessar antes de expirar (Cada vez que um pacote passa por um roteador, o TTL é reduzido em 1)
+    TTL=64 significa que o pacote ainda pode passar por até 64 dispositivos antes de ser descartado (evita que pacotes fiquem circulando infinitamente em loops de roteamento)
+
+- Perda de pacotes: 
+    percentual de mensagens enviadas que não receberam resposta. Pode indicar problemas de conectividade, congestionamento ou filtragem.
+
+- Radmin VPN
+    cria uma interface virtual para conectar computadores através de uma rede privada virtual.
+
+- Tailscale 
+    cria uma interface virtual, ela pode apresentar uma configuração IPv4 automática sem comprometer sua conexão principal (APIPA por exemplo).
+
+- Ethernet:
+    referente a internet cabeada
+
+- (WSL)
+    permite a comunicação entre o Windows e ambientes Linux virtualizados pelo WSL.
+
+- Endereço físico (physical address)
+    MAC da interface

@@ -1,0 +1,46 @@
+==================== REDES E PROTOCOLOS ====================
+
+
+Quando um computador precisa enviar informações para outro dispositivo, ele transmite dados através da rede.
+Esses dados não são necessariamente enviados como um único bloco gigante.
+Dependendo do protocolo, eles são organizados em unidades menores, como pacotes, que são transmitidos pela infraestrutura de rede até o destino.
+
+
+- O que é uma Rede de computadores (computer network):
+    Uma computer network é um grupo de dispositivos conectados entre eles para permitir a comunicação e o compartilhamento de informações, recursos e serviços.
+    (Computers, Servers, Printers, Smartphones, Routers, Switches)
+
+
+- O que são protocolos (protocol):
+    Dispositivos utilizam protocolos de comunicação para estabelecer regras sobre como essas informações são compartilhadas, recebidas e interpretadas.
+
+
+- O que são pacotes (packet): 
+    é uma unidade de dados transmitida por uma rede utilizando o protocolo IP.
+    contém: IP de origem, IP de destino e Payload (dados sendo transportados)
+    uma comunicação pode gerar vários pacotes, e eles podem até seguir caminhos diferentes
+
+
+==================== LAN, VLAN, WLAN E ETHERNET ====================
+
+
+- O que é LAN (Local Area Network): 
+    É uma rede que conecta dispositivos em uma área relativamente limitada.
+
+
+- O que é VLAN (Virtual Local Area Network): 
+    É uma forma de separar LANs, uma maneira de criar redes locais separadas usando a mesma infraestrutura física
+
+    Temos: 1 switch físico - 10 computadores do financeiro - 10 computadores do TI.
+    Podemos dividir em: VLAN 10 → Financeiro - VLAN 20 → TI
+
+
+- O que é WLAN (Wireless Local Area Network)
+    É uma LAN que utiliza comunicação sem fio, normalmente Wi-Fi.
+
+
+- O que é Ethernet:
+    Grupo de tecnologias e padrões de comunicação para redes locais, normalmente cabeadas.
+    
+
+- Podemos ter 12 dispositivos na ethernet com switch, 13 conectados na WLAN e todos estão na mesma LAN (na mesma rede)
