@@ -47,3 +47,18 @@ Podemos escolher também qual servidor DNS desejamos consultar:
     nslookup google.com 1.1.1.1
 
     Nesse caso, estamos pedindo ao DNS público do Google/Cloudflare que resolva o domínio.
+
+
+==================== TEST-NETCONNECTION====================
+
+
+Test-NetConnection IP Adress -Port (numero da porta)
+    testa conexão TCP com a porta (não testa UDP)
+
+    - TcpTestSucceeded: True → conexão TCP estabelecida.
+    - TcpTestSucceeded: False → conexão não estabelecida. A porta pode estar fechada, bloqueada por firewall ou existir algum problema de rota/disponibilidade do servidor
+
+
+Usuário A: Firewall permite TCP 3389 → TcpTestSucceeded: True.
+Usuário B: Firewall bloqueia TCP 3389 especificamente para o IP dele → TcpTestSucceeded: False.
+Usuário C: Firewall bloqueia TCP 3389 para todos → TcpTestSucceeded: False.
