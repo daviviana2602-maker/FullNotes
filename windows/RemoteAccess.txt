@@ -1,0 +1,29 @@
+==================== REMOTE ACCES ====================
+
+
+Exemplo: 
+    Funcionário está trabalhando em casa e não consegue abrir determinado programa.
+    O analista de suporte acessa o computador remotamente para investigar o problema.
+
+
+- Ferramentas comuns
+
+    - Remote Desktop (RDP)
+    Permite conectar-se e controlar outro computador Windows remotamente. Utiliza normalmente a porta TCP 3389.
+
+    - Quick Assist (Assistência Rápida)
+    Ferramenta do Windows que permite compartilhar a tela e conceder controle remoto com autorização do usuário.
+
+    - TeamViewer / AnyDesk
+    Ferramentas de terceiros utilizadas para suporte e acesso remoto.
+
+
+Remote sup flow:
+
+    1 - Usuário relata o problema.
+    2 - Suporte confirma a identidade e obtém autorização para acessar o computador.
+    3 - Estabelece a conexão remota utilizando a ferramenta autorizada pela empresa.
+    4 - Investiga o problema, observando mensagens de erro, configurações e comportamento do sistema.
+    5 - Executa os procedimentos permitidos
+    6 - Confirma com o usuário se o problema foi resolvido.
+    7 - Registra as ações realizadas no chamado.
