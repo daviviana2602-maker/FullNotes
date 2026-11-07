@@ -15,15 +15,19 @@ A porta identifica qual serviço ou aplicação deve receber determinada comunic
 - Porta bloqueada: uma regra de firewall ou outro mecanismo impede a comunicação.
 
 
-PORTAS IMPORTANTES (Important ports):
+PORTAS IMPORTANTES (Important ports / padrão mundial):
+(Não significa que todos os computadores tenham essas portas abertas, a aplicação pode utilizar outra porta com configuração)
 
-        Porta	Protocolo/serviço	                Utilidade                           Transporte habitual
+        Porta	Protocolo/serviço	                Utilidade                     Protocolo de transporte habitual
          80	         HTTP	             Acesso a sites sem criptografia TLS                    TCP 
          443	     HTTPS	                  Acesso seguro a sites                           TCP/UDP
          53	         DNS	                    Resolução de nomes                            TCP/UDP
          22	         SSH	                   Acesso remoto seguro                             TCP
         3389	     RDP	               Área de Trabalho Remota do Windows                  TCP/UDP
          25	         SMTP	              Envio de e-mails entre servidores                     TCP
+
+    - Podem existir simultaneamente TCP 443 e UDP 443 no mesmo computador (TCP e UDP possuem espaços de portas separados)
+    - O sistema operacional define qual pacote vai pra qual porta (TCP/UDP)
 
 
 ==================== FIREWALL ====================

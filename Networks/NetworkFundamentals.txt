@@ -1,4 +1,4 @@
-==================== REDES E PROTOCOLOS ====================
+==================== REDES, PROTOCOLOS E PACOTES ====================
 
 
 Quando um computador precisa enviar informações para outro dispositivo, ele transmite dados através da rede.
@@ -17,7 +17,9 @@ Dependendo do protocolo, eles são organizados em unidades menores, como pacotes
 
 - O que são pacotes (packet): 
     é uma unidade de dados transmitida por uma rede utilizando o protocolo IP.
-    contém: IP de origem, IP de destino e Payload (dados sendo transportados)
+
+    O pacote IP pode carregar um segmento TCP, um datagrama UDP ou uma mensagem ICMP.
+    Contém: IP de origem, IP de destino, protocolo de transporte (TCP/UDP/ICMP....) e Payload (dados sendo transportados)
     uma comunicação pode gerar vários pacotes, e eles podem até seguir caminhos diferentes
 
 
