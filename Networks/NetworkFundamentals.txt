@@ -20,7 +20,24 @@ Dependendo do protocolo, eles são organizados em unidades menores, como pacotes
 
     O pacote IP pode carregar um segmento TCP, um datagrama UDP ou uma mensagem ICMP.
     Contém: IP de origem, IP de destino, protocolo de transporte (TCP/UDP/ICMP....) e Payload (dados sendo transportados)
-    uma comunicação pode gerar vários pacotes, e eles podem até seguir caminhos diferentes
+
+    Uma comunicação pode gerar vários pacotes, eles podem seguir caminhos diferentes.
+
+
+- FLOW:
+
+    1 - Usuário digita google.com: o navegador identifica o endereço que deseja acessar.
+    2 - DNS: o computador resolve o domínio e obtém o IP do Google.
+
+    3 - Dados, encapsulamento e criação dos pacotes:
+        - Navegador prepara os dados HTTP que deseja enviar.
+        - TCP organiza os dados em segmentos.
+        - IP encapsula esses segmentos em pacotes IP.
+        - Ethernet ou Wi-Fi encapsula os pacotes em quadros para transmissão local.
+
+    4 - Computador envia os quadros ao Gateway, que recebe os pacotes IP e os encaminha ao destino.
+    5 - Pacote passa por provedor e intermediários (cada roteador decide o próximo salto).
+    6 - Pacotes chegam ao servidor do Google, que processa a requisição.
 
 
 ==================== LAN, VLAN, WLAN E ETHERNET ====================

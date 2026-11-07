@@ -46,43 +46,6 @@ Temos:
     - Encaminha o pacote para a próxima rede, em direção ao destino.
 
 
-==================== SUBNET MASK ====================
-
-
-Subnet Mask responde a uma pergunta:
-    "O dispositivo para o qual quero enviar uma informação está na minha rede local ou preciso enviar essa informação para o roteador/gateway?"
-
-
-Imagine que seu PC tem:
-
-    - IP: 192.168.1.10
-    - Subnet mask: 255.255.255.0  (Cada 255 indica que aquele octeto inteiro é utilizado para identificar a rede)
-
-    SITUAÇÃO 1: Ele quer enviar uma mensagem para outro dispositivo, um celular com IP 192.168.1.20
-
-    - O PC usa a subnet mask para descobrir que o celular pertence à mesma rede (192.168.1.0/24).
-    - O PC pode enviar os dados diretamente pela rede local, sem precisar encaminhá-los ao roteador.
-
-    SITUAÇÃO 2: Ele quer enviar uma mensagem para outro dispositivo, um servidor com IP 8.8.8.8
-
-    - O PC percebe que esse endereço não pertence à sua rede local.
-    - O PC encaminha os dados para o gateway, normalmente o roteador, que vai cuidar do encaminhamento.
-
-
-Tabela pra reconhecimento de uso de Bits por octeto:
-
-    Valor do octeto	    Bits	Significado
-    255	11111111	     8      bits de rede
-    254	11111110	     7      bits de rede
-    252	11111100	     6      bits de rede
-    248	11111000	     5      bits de rede
-    240	11110000	     4      bits de rede
-    224	11110000	     3      bits de rede
-    192 11000000         2      bits de rede
-    128	10000000	     1      bits de rede
-     0	00000000	     0      bits de rede
-
-
 ==================== GATEWAY ====================
 
 

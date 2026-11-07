@@ -30,6 +30,34 @@ PORTAS IMPORTANTES (Important ports / padrão mundial):
     - O sistema operacional define qual pacote vai pra qual porta (TCP/UDP)
 
 
+==================== TCP e UDP ====================
+
+
+- TCP e UDP definem como os dados serão transportados entre as aplicações.
+
+
+- TCP (Transmission Control Protocol) - Transporte confiável e ordenado
+
+    - Prioriza a entrega confiável dos dados.
+    - Confirma o recebimento.
+    - Retransmite dados perdidos.
+    - Mantém a ordem dos dados.
+    - Um pacote se perde → pode solicitar retransmissão → espera pelo dado.
+
+    Exemplo: baixar um arquivo. Não queremos que faltem pedaços dele, mesmo que isso leve mais tempo.
+
+
+- UDP (User Datagram Protocol) - Transporte sem garantias de entrega ou ordenação
+
+    - Prioriza uma transmissão com pouca sobrecarga e baixa latência.
+    - Não garante entrega completa.
+    - Não confirma individualmente o recebimento.
+    - Não garante a ordem dos pacotes.
+    - Um pacote se perde → segue transmitindo os próximos → pode haver uma pequena falha no áudio.
+
+    Exemplo: chamadas de voz e vídeo em tempo real.
+
+
 ==================== FIREWALL ====================
 
 
