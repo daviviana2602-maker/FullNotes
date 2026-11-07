@@ -16,12 +16,16 @@ Dependendo do protocolo, eles são organizados em unidades menores, como pacotes
 
 
 - O que são pacotes (packet): 
-    é uma unidade de dados transmitida por uma rede utilizando o protocolo IP.
-
-    O pacote IP pode carregar um segmento TCP, um datagrama UDP ou uma mensagem ICMP.
-    Contém: IP de origem, IP de destino, protocolo de transporte (TCP/UDP/ICMP....) e Payload (dados sendo transportados)
-
+    É uma unidade de dados transmitida por uma rede utilizando o protocolo IP.
     Uma comunicação pode gerar vários pacotes, eles podem seguir caminhos diferentes.
+
+    O pacote IP pode carregar um segmento TCP, um datagrama UDP ou uma mensagem ICMP. 
+    Contém: 
+
+    - IP de origem/destino
+    - Protocolo de transporte (TCP/UDP/ICMP....)
+    - Se o pacote tiver protocolo TCP ou UDP carrega: Porta de origem (Alguma porta temporária do computador) e porta de destino (varia de acordo com serviço)
+    - Payload (dados sendo transportados)
 
 
 - FLOW:
@@ -37,7 +41,7 @@ Dependendo do protocolo, eles são organizados em unidades menores, como pacotes
 
     4 - Computador envia os quadros ao Gateway, que recebe os pacotes IP e os encaminha ao destino.
     5 - Pacote passa por provedor e intermediários (cada roteador decide o próximo salto).
-    6 - Pacotes chegam ao servidor do Google, que processa a requisição.
+    6 - Os pacotes chegam ao servidor do Google, que entrega os dados à aplicação correspondente. O servidor processa a requisição e envia a resposta ao navegador.
 
 
 ==================== LAN, VLAN, WLAN E ETHERNET ====================

@@ -2,7 +2,7 @@
 
 - O que é o ping?
     O ping testa se seu computador consegue obter resposta de outro dispositivo pela rede.
-    Envia uma mensagem chamada ICMP Echo Request e espera uma resposta chamada ICMP Echo Reply.
+    Envia uma mensagem chamada ICMP Echo Request e espera uma resposta chamada ICMP Echo Reply Vinda de um: servidor, computador Windows/Linux ou roteador.
 
 
 - ping DESTINO (O destino pode ser um endereço IP ou um domínio.)
